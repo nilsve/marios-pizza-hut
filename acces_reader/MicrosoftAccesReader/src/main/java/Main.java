@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 import java.sql.*;
 
 public class Main {
-    // File addres, dont forget to ch
+    // File address, dont forget to change!
     private static final String OUTPUT_FILE_URL = "C:/git/marios-pizza-hut/insert postcodes.sql";
 
     public static void main(String[] args) throws SQLException, FileNotFoundException {
