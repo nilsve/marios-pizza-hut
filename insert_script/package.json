@@ -1,0 +1,28 @@
+{
+  "name": "mario-importer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "babel-node": "babel-node --presets=latest",
+    "start": "npm run babel-node -- ./index.js",
+    "inspect": "npm run babel-node --inspect --debug-brk -- ./index.js",
+    "build": "babel src -d dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "xlsx": "^0.14.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "nodemon": "^1.18.4"
+  },
+  "babel": {
+    "presets": [
+      "latest"
+    ]
+  }
+}
