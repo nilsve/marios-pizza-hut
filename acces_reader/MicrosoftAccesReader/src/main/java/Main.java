@@ -4,10 +4,11 @@ import java.io.PrintWriter;
 import java.sql.*;
 
 public class Main {
-
+    // File addres, dont forget to ch
+    private static final String OUTPUT_FILE_URL = "C:/git/marios-pizza-hut/insert postcodes.sql";
 
     public static void main(String[] args) throws SQLException, FileNotFoundException {
-        final File outputFile = new File("C:/Users/indy/Google Drive/Mario's Pizza Hut/SQL/Insert/insert postcodes.sql");
+        final File outputFile = new File(OUTPUT_FILE_URL);
         PrintWriter printWriter = new PrintWriter(outputFile);
         Connection connection = DriverManager.getConnection(
                 "jdbc:ucanaccess://C:/Users/indy/Google Drive/Mario's Pizza Hut/Aangeleverde data/Postcodes (Access).zip (Unzipped Files)/Postcode tabel.mdb"
