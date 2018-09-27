@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `klant` (
   `voornaam` VARCHAR(25) NOT NULL,
   `achternaam` VARCHAR(55) NOT NULL,
   PRIMARY KEY (`klant_id`),
-  CONSTRAINT `fk_Klant_Adres1` FOREIGN KEY (`adres_id`) REFERENCES `adres` (`adres_id`)
+  CONSTRAINT FOREIGN KEY (`adres_id`) REFERENCES `adres` (`adres_id`)
 );
 
 
