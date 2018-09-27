@@ -1,4 +1,21 @@
+
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- -----------------------------------------------------
+-- Table `postcode`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `postcode` ;
+
+CREATE TABLE IF NOT EXISTS `postcode` (
+  `postcode_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `postcode` CHAR(6) NOT NULL,
+  `reeks` INT(1) NOT NULL,
+  `eerste_huis` INT(11) NOT NULL,
+  `laatste_huis` INT(11) NOT NULL,
+  `woonplaats` VARCHAR(75) NOT NULL,
+  `straatnaam` VARCHAR(125) NOT NULL,
+  PRIMARY KEY (`postcode_id`)
+  );
 
 -- -----------------------------------------------------
 -- Table `adres`
@@ -7,14 +24,13 @@ DROP TABLE IF EXISTS `adres` ;
 
 CREATE TABLE IF NOT EXISTS `adres` (
   `adres_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `postcode` CHAR(6) NOT NULL,
-  `reeks` INT(11) NOT NULL,
-  `eerste_huis` INT(11) NOT NULL,
-  `laatste_huis` INT(11) NOT NULL,
+  `postcode_id` INT UNSIGNED NOT NULL,
+  `huisnummer` INT(11) NOT NULL,
   `woonplaats` VARCHAR(75) NOT NULL,
   `straatnaam` VARCHAR(125) NOT NULL,
-  PRIMARY KEY (`adres_id`));
-
+  PRIMARY KEY (`adres_id`),
+  CONSTRAINT FOREIGN KEY (`postcode_id`) REFERENCES `postcode` ( `postcode_id` )
+);
 
 -- -----------------------------------------------------
 -- Table `prijs`
@@ -257,6 +273,7 @@ DROP TABLE IF EXISTS `bestelling` ;
 
 CREATE TABLE IF NOT EXISTS `bestelling` (
   `bestelling_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `filiaal_id` INT UNSIGNED NOT NULL,
   `coupon_id` INT UNSIGNED NOT NULL,
   `klant_id` INT UNSIGNED NOT NULL,
   `product_id` INT UNSIGNED NOT NULL,
@@ -270,6 +287,7 @@ CREATE TABLE IF NOT EXISTS `bestelling` (
   `optie` VARCHAR(45) NULL,
   `extra_ingredienten` VARCHAR(45) NULL,
   PRIMARY KEY (`bestelling_id`),
+  CONSTRAINT FOREIGN KEY (`filiaal_id`) REFERENCES `filiaal` (`filiaal_id`),
   CONSTRAINT FOREIGN KEY (`klant_id`) REFERENCES `klant` (`klant_id`),
   CONSTRAINT FOREIGN KEY (`coupon_id`) REFERENCES `coupon` (`coupon_id`),
   CONSTRAINT FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
