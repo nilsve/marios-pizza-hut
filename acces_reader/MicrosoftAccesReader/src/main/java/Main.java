@@ -14,6 +14,7 @@ public class Main {
                 "jdbc:ucanaccess://C:/Users/indy/Google Drive/Mario's Pizza Hut/Aangeleverde data/Postcodes (Access).zip (Unzipped Files)/Postcode tabel.mdb"
         );
 
+        printWriter.println("begin\ndelete from postcodes;");
         Statement statement = connection.createStatement();
         ResultSet set = statement.executeQuery("select 'insert into adres(postcode, reeks, eerste_huis, laatste_huis, woonplaats, straatnaam)\n" +
                                                    "values(''' + replace(A13_POSTCODE,' ', '') + ''', ' + A13_REEKSIND + ', ' + A13_BREEKPUNT_VAN + ', ' + A13_BREEKPUNT_TEM + ', ''' + replace(A13_WOONPLAATS,'''', '') + ''', ''' + replace(A13_STRAATNAAM,'''', '') + ''');' from POSTCODES;");
@@ -27,6 +28,7 @@ public class Main {
             }
             printWriter.println("");
         }
+        printWriter.println("end;");
         printWriter.close();
     }
 }
