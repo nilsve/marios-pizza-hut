@@ -56,6 +56,7 @@ public class BestellingenParser {
         int orderCounter = 0;
         String lastCoupon = "";
         Double lastTotal = 0.0;
+        String currentCoupon = "";
 
 
         // Get order headers
@@ -143,7 +144,13 @@ public class BestellingenParser {
                                 smaak.add("ifnull(( select smaak from product where upper(naam) = upper(" + returnData(row.getCell(y - 3), true) + ") ), null)");
                                 break;
                             case 12:
-                                optie_id.add("( select product_id from product where upper(naam) = upper(" + returnData(cell, true) + " and optie = 1))");
+                                String[] option = returnData(cell, false).split(" ");
+                                String realOption = "";
+
+                                for (int b = 0; b < option.length - 2; b++) {
+                                    realOption += option[b] + " ";
+                                }
+                                optie_id.add("( select product_id from product where upper(naam) = upper('" + realOption.trim() + "' and optie = 1))");
                                 break;
                             case 13:
                                 prijs.add(returnData(cell, false));
@@ -243,44 +250,60 @@ public class BestellingenParser {
             }
             for (int q = 0; q < orderCounters.get(p); q++) {
 
-                printWriter.println("insert into bestelling( \n" +
-                        "    filiaal_id,\n" +
-                        "    klant_id,\n" +
+                if (q == 0) {
+                    printWriter.println("insert into bestelling( \n" +
+                            "    filiaal_id,\n" +
+                            "    klant_id,\n" +
+                            "    besteldatum,\n" +
+                            "    afhaal_bezorgen, \n" +
+                            "    afhaal_bezorg_tijd,\n" +
+                            "    coupon_id,\n" +
+                            "    coupon_korting,\n" +
+                            "    totaalprijs\n" +
+                            ") values (\n" +
+                            "\t" + filiaal_id.get(p) + ",\n" +
+                            "\t" + klant_id.get(p) + ",\n" +
+                            "\t" + besteldatum.get(p) + ",\n" +
+                            "\t" + afhaal_bezorgen.get(p) + ",\n" +
+                            "\t" + afhaal_bezorg_tijd.get(p) + ",\n" +
+                            "\t" + coupon_id.get(printQueryCounter) + ",\n" +
+                            "\t" + coupon_korting.get(printQueryCounter) + ",\n" +
+                            "\t" + totaalprijs.get(printQueryCounter) +
+                            "\n);");
+                    printWriter.println();
+                }
+
+                printWriter.println("insert into bestelregel( \n" +
                         "    product_id,\n" +
                         "    pizzabodem_id,\n" +
                         "    pizzasaus_id,\n" +
                         "    prijs,\n" +
-                        "    besteldatum,\n" +
-                        "    afhaal_bezorgen, \n" +
-                        "    afhaal_bezorg_tijd,\n" +
                         "    smaak,\n" +
                         "    optie_id,\n" +
                         "    aantal,\n" +
                         "    extra_ingredienten_id,\n" +
                         "    extra_aantal,\n" +
-                        "    extra_prijs,\n" +
-                        "    coupon_id,\n" +
-                        "    coupon_korting,\n" +
-                        "    totaalprijs\n" +
+                        "    extra_prijs\n" +
                         ") values (\n" +
-                        "\t" + filiaal_id.get(p) + ",\n" +
-                        "\t" + klant_id.get(p) + ",\n" +
                         "\t" + product_id.get(printQueryCounter) + ",\n" +
                         "\t" + pizzabodem_id.get(printQueryCounter) + ",\n" +
                         "\t" + pizzasaus_id.get(printQueryCounter) + ",\n" +
                         "\t" + prijs.get(printQueryCounter) + ",\n" +
-                        "\t" + besteldatum.get(p) + ",\n" +
-                        "\t" + afhaal_bezorgen.get(p) + ",\n" +
-                        "\t" + afhaal_bezorg_tijd.get(p) + ",\n" +
                         "\t" + smaak.get(printQueryCounter) + ",\n" +
                         "\t" + optie_id.get(printQueryCounter) + ",\n" +
                         "\t" + aantal.get(printQueryCounter) + ",\n" +
                         "\t" + extra_aantal.get(printQueryCounter) + ",\n" +
                         "\t" + extra_ingredienten.get(printQueryCounter) + ",\n" +
-                        "\t" + extra_prijs.get(printQueryCounter) + ",\n" +
-                        "\t" + coupon_id.get(printQueryCounter) + ",\n" +
-                        "\t" + coupon_korting.get(printQueryCounter) + ",\n" +
-                        "\t" + totaalprijs.get(printQueryCounter) +
+                        "\t" + extra_prijs.get(printQueryCounter) +
+                        "\n);");
+                printWriter.println();
+
+                printWriter.println("insert into bestelling_bestelregel( \n" +
+                        "    bestelling_id,\n" +
+                        "    bestelregel_id\n" +
+                        ") values (\n" +
+                        "\t" + (p + 1) + ",\n" +
+                        "\t" + (q + 1) +
                         "\n);");
                 printWriter.println();
                 printQueryCounter++;

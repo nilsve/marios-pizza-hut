@@ -93,15 +93,16 @@ DROP TABLE IF EXISTS `coupon` ;
 
 CREATE TABLE IF NOT EXISTS `coupon` (
   `coupon_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `filiaal_id` INT UNSIGNED NOT NULL,
-  `couponcode` INT(5) NOT NULL,
+  `filiaal_id` INT UNSIGNED NULL,
+  `couponcode` INT(5) NULL,
   `omschrijving` VARCHAR(300) NOT NULL,
   `type` VARCHAR(20) NOT NULL,
-  `kortingspercentage` DECIMAL(2,2) NULL,
+  `kortingspercentage` DECIMAL NULL,
   `korting` INT NULL,
   `beschikbaar` TINYINT(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`coupon_id`),
-  CONSTRAINT FOREIGN KEY (`filiaal_id`) REFERENCES `filiaal` (`filiaal_id`)
+  CONSTRAINT FOREIGN KEY (`filiaal_id`) REFERENCES `filiaal` (`filiaal_id`),
+  CHECK (`type` in (`KORTINGSPERCENTAGE`, `KORTINGSBEDRAG`))
 );
 
 -- -----------------------------------------------------
@@ -278,31 +279,54 @@ CREATE TABLE IF NOT EXISTS `bestelling` (
   `bestelling_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `filiaal_id` INT UNSIGNED NOT NULL,
   `klant_id` INT UNSIGNED NOT NULL,
-  `product_id` INT UNSIGNED NOT NULL,
-  `pizzabodem_id` INT UNSIGNED NULL,
-  `pizzasaus_id` INT UNSIGNED NULL,
-  `prijs` DECIMAL(3,2) NOT NULL,
   `besteldatum` DATETIME NULL,
   `afhaal_bezorgen` VARCHAR(8) NOT NULL,
   `afhaal_bezorg_tijd` DATETIME NULL,
-  `smaak` VARCHAR(45) NULL,
-  `optie_id` INT UNSIGNED NULL,
-  `aantal` INT (3) NOT NULL,
-  `extra_ingredient_id` VARCHAR(45) NULL,
-  `extra_aantal`  INT(2) NULL,
-  `extra_prijs` DECIMAL(2,2) NOT NULL,
   `coupon_id` INT UNSIGNED NULL,
   `coupon_korting` DECIMAL(3,2) NULL,
   `totaalprijs` INT NOT NULL,
   PRIMARY KEY (`bestelling_id`),
   CONSTRAINT FOREIGN KEY (`filiaal_id`) REFERENCES `filiaal` (`filiaal_id`),
   CONSTRAINT FOREIGN KEY (`klant_id`) REFERENCES `klant` (`klant_id`),
+  CONSTRAINT FOREIGN KEY (`coupon_id`) REFERENCES `coupon` (`coupon_id`)
+);
+
+-- -----------------------------------------------------
+-- Table `bestelling`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `bestelregel` ;
+
+CREATE TABLE IF NOT EXISTS `bestelregel` (
+  `bestelregel_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `product_id` INT UNSIGNED NOT NULL,
+  `pizzabodem_id` INT UNSIGNED NULL,
+  `pizzasaus_id` INT UNSIGNED NULL,
+  `prijs` DECIMAL(3,2) NOT NULL,
+  `smaak` VARCHAR(45) NULL,
+  `optie_id` INT UNSIGNED NULL,
+  `aantal` INT (3) NOT NULL,
+  `extra_ingredient_id` VARCHAR(45) NULL,
+  `extra_aantal`  INT(2) NULL,
+  `extra_prijs` DECIMAL(2,2) NOT NULL,
+  PRIMARY KEY (`bestelregel_id`),
   CONSTRAINT FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
   CONSTRAINT FOREIGN KEY (`pizzabodem_id`) REFERENCES `pizzabodem` (`pizzabodem_id`),
   CONSTRAINT FOREIGN KEY (`pizzasaus_id`) REFERENCES `categorie` (`categorie_id`),
   CONSTRAINT FOREIGN KEY (`optie_id`) REFERENCES `product` (`product_id`),
-  CONSTRAINT FOREIGN KEY (`extra_ingredient_id`) REFERENCES `ingredient` (`ingredient_id`),
-  CONSTRAINT FOREIGN KEY (`coupon_id`) REFERENCES `coupon` (`coupon_id`)
+  CONSTRAINT FOREIGN KEY (`extra_ingredient_id`) REFERENCES `ingredient` (`ingredient_id`)
+);
+
+-- -----------------------------------------------------
+-- Table `bestelling_bestelregel`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `bestelling_bestelregel` ;
+
+CREATE TABLE IF NOT EXISTS `bestelling_bestelregel` (
+  `bestelling_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `bestelregel_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`bestelling_id`, `bestelregel_id`),
+  CONSTRAINT FOREIGN KEY (`bestelling_id`) REFERENCES `bestelling` (`bestelling_id`),
+  CONSTRAINT FOREIGN KEY (`bestelregel_id`) REFERENCES `bestelregel` (`bestelregel_id`)
 );
 
 SET FOREIGN_KEY_CHECKS = 1;

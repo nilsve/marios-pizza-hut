@@ -16,7 +16,7 @@ public class PostcodeSelecter {
         printWriter.println("delete from adres;");
         Statement statement = connection.createStatement();
         ResultSet set = statement.executeQuery("select '\tinsert into adres(postcode, reeks, eerste_huis, laatste_huis, woonplaats, straatnaam)\n" +
-                                                   "\tvalues(''' + replace(A13_POSTCODE,' ', '') + ''', ' + A13_REEKSIND + ', ' + A13_BREEKPUNT_VAN + ', ' + A13_BREEKPUNT_TEM + ', ''' + replace(A13_WOONPLAATS,'''', '') + ''', ''' + replace(A13_STRAATNAAM,'''', '') + ''');' from POSTCODES;\n");
+                "\tvalues(''' + replace(A13_POSTCODE,' ', '') + ''', ' + A13_REEKSIND + ', ' + A13_BREEKPUNT_VAN + ', ' + A13_BREEKPUNT_TEM + ', ''' + replace(A13_WOONPLAATS,'''', '') + ''', ''' + replace(A13_STRAATNAAM,'''', '') + ''');' from POSTCODES;\n");
         ResultSetMetaData rsmd = set.getMetaData();
         int columnsNumber = rsmd.getColumnCount();
         while (set.next()) {
