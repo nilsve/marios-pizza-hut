@@ -4,8 +4,9 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws IOException, SQLException {
-//        PostcodeSelecter.main();
-//        BestellingenParser.main();
-        FiliaalReader.main();
+        // Choose wich programs to run.
+        //PostcodeSelector.main();
+        //BestellingenParser.main();
+        //FiliaalParser.main();
     }
 }
