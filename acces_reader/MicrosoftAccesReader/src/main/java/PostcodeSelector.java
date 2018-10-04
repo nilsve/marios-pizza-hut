@@ -14,7 +14,7 @@ public class PostcodeSelector {
     // Printing each new file in System.out
     final boolean PRINT_FILES = true;
 
-    static File outputFile = new File("C:/git/marios-pizza-hut/insert postcodes.sql");
+    static File outputFile = new File( System.getProperty("user.dir") + "/../insert postcodes.sql");
 
 
     public static void main() throws SQLException, FileNotFoundException {
@@ -22,10 +22,13 @@ public class PostcodeSelector {
         PrintWriter printWriter = new PrintWriter(outputFile);
 
         // Connection .mdb Acces file using Ucanacces
-        Connection connection = DriverManager.getConnection("jdbc:ucanaccess://C:/Users/indy/Google Drive/Mario's Pizza Hut/Aangeleverde data/Postcodes (Access).zip (Unzipped Files)/Postcode tabel.mdb");
+        String mdbPath = "jdbc:ucanaccess://" + System.getProperty("user.dir") + "/../Postcode tabel.mdb";
+
+        Connection connection = DriverManager.getConnection(mdbPath);
 
         // Preparing and entering query
         Statement statement = connection.createStatement();
+
         ResultSet set = statement.executeQuery("select 'insert into postcode(postcode, reeks, eerste_huis, laatste_huis, woonplaats, straatnaam) values(''' + replace(A13_POSTCODE,' ', '') + ''', ' + A13_REEKSIND + ', ' + A13_BREEKPUNT_VAN + ', ' + A13_BREEKPUNT_TEM + ', ''' + replace(A13_WOONPLAATS,'''', '') + ''', ''' + replace(A13_STRAATNAAM,'''', '') + ''');' from POSTCODES;");
         ResultSetMetaData resultSetMetaData = set.getMetaData();
 

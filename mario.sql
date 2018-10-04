@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `postcode` (
   `woonplaats` VARCHAR(75) NOT NULL,
   `straatnaam` VARCHAR(125) NOT NULL,
   PRIMARY KEY (`postcode_id`)
-  );
+);
 
 -- -----------------------------------------------------
 -- Table `adres`
@@ -24,13 +24,12 @@ DROP TABLE IF EXISTS `adres` ;
 
 CREATE TABLE IF NOT EXISTS `adres` (
   `adres_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `postcode_id` INT UNSIGNED NOT NULL,
+  `postcode` VARCHAR(12) NOT NULL,
   `huisnummer` INT(12) NOT NULL,
   `toevoeging` VARCHAR(12) NOT NULL,
   `woonplaats` VARCHAR(75) NOT NULL,
   `straatnaam` VARCHAR(125) NOT NULL,
   PRIMARY KEY (`adres_id`),
-  CONSTRAINT FOREIGN KEY (`postcode_id`) REFERENCES `postcode` ( `postcode_id` )
 );
 
 -- -----------------------------------------------------

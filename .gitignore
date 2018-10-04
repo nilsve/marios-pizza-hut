@@ -1,1 +1,2 @@
-acces_reader/MicrosoftAccesReader/.idea/*
+/acces_reader/MicrosoftAccesReader/.idea/
+*.class
