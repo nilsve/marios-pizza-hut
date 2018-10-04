@@ -1,6 +1,6 @@
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1059NJ' ),
+	'1059NJ',
 	14,
 	null,
 	'Aalsmeerweg',
@@ -14,9 +14,9 @@ values(
 	'0204122131'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1055DT' ),
+	'1055DT',
 	215,
 	null,
 	'Bos en Lommerweg',
@@ -30,9 +30,9 @@ values(
 	'0206847676'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1072GL' ),
+	'1072GL',
 	314,
 	null,
 	'Ceintuurbaan',
@@ -46,9 +46,9 @@ values(
 	'0204705292'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1032HP' ),
+	'1032HP',
 	40,
 	null,
 	'Kamperfoelieweg',
@@ -62,9 +62,9 @@ values(
 	'0203340008'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1019BP' ),
+	'1019BP',
 	142,
 	null,
 	'Oostelijke Handelskade',
@@ -78,9 +78,9 @@ values(
 	'0204350660'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1054HC' ),
+	'1054HC',
 	71,
 	null,
 	'Overtoom',
@@ -94,9 +94,9 @@ values(
 	'0204122131'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1069LA' ),
+	'1069LA',
 	212,
 	'E',
 	'Pieter Calandlaan',
@@ -110,9 +110,9 @@ values(
 	'0206673880'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2565GH' ),
+	'2565GH',
 	3,
 	null,
 	'Goudenregenplein',
@@ -126,9 +126,9 @@ values(
 	'0703616111'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2552EP' ),
+	'2552EP',
 	36,
 	null,
 	'Oude Haagweg',
@@ -142,9 +142,9 @@ values(
 	'0704400020'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2513BW' ),
+	'2513BW',
 	140,
 	null,
 	'Torenstraat',
@@ -158,9 +158,9 @@ values(
 	'0703467757'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2583DR' ),
+	'2583DR',
 	6,
 	null,
 	'Zeesluisweg',
@@ -174,9 +174,9 @@ values(
 	'0703060022'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '9402BG' ),
+	'9402BG',
 	199,
 	'A',
 	'Troelstralaan',
@@ -190,9 +190,9 @@ values(
 	'0592350060'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '7811GC' ),
+	'7811GC',
 	6,
 	null,
 	'Spoorstraat',
@@ -206,9 +206,9 @@ values(
 	'0591724400'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '7941KD' ),
+	'7941KD',
 	13,
 	null,
 	'Prinsengracht',
@@ -222,9 +222,9 @@ values(
 	'0522743110'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1325ES' ),
+	'1325ES',
 	238,
 	null,
 	'Cinemadreef',
@@ -238,9 +238,9 @@ values(
 	'0365359494'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1335HW' ),
+	'1335HW',
 	209,
 	null,
 	'Makassarweg',
@@ -254,9 +254,9 @@ values(
 	'0365213990'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '8223AC' ),
+	'8223AC',
 	26,
 	null,
 	'Weverstraat',
@@ -270,9 +270,9 @@ values(
 	'0320213018'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '9203CE' ),
+	'9203CE',
 	56,
 	null,
 	'Noordkade',
@@ -286,9 +286,9 @@ values(
 	'0512510015'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '8441BH' ),
+	'8441BH',
 	11,
 	null,
 	'Trambaan',
@@ -302,9 +302,9 @@ values(
 	'0513625635'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '8921AA' ),
+	'8921AA',
 	5,
 	null,
 	'Oostergrachtswal',
@@ -318,9 +318,9 @@ values(
 	'0582120026'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '8601BZ' ),
+	'8601BZ',
 	32,
 	null,
 	'Gedempte Pol',
@@ -334,9 +334,9 @@ values(
 	'0515411045'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '7333NA' ),
+	'7333NA',
 	251,
 	null,
 	'Arnhemseweg',
@@ -350,9 +350,9 @@ values(
 	'0555761188'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '6832AP' ),
+	'6832AP',
 	65,
 	null,
 	'Middelgraaflaan',
@@ -366,9 +366,9 @@ values(
 	'0263883993'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '6811AL' ),
+	'6811AL',
 	27,
 	null,
 	'Jansbinnensingel',
@@ -382,9 +382,9 @@ values(
 	'0263510100'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '6713EN' ),
+	'6713EN',
 	62,
 	null,
 	'Rozenplein',
@@ -398,9 +398,9 @@ values(
 	'0318504100'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3842EJ' ),
+	'3842EJ',
 	90,
 	null,
 	'Vondellaan',
@@ -414,9 +414,9 @@ values(
 	'0341410010'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '6531HJ' ),
+	'6531HJ',
 	243,
 	null,
 	'Groenestraat',
@@ -430,9 +430,9 @@ values(
 	'0243500670'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '4001LH' ),
+	'4001LH',
 	53,
 	null,
 	'Plein',
@@ -446,9 +446,9 @@ values(
 	'0344610004'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '6883AR' ),
+	'6883AR',
 	71,
 	null,
 	'Churchillplein',
@@ -462,9 +462,9 @@ values(
 	'0263610001'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '6701AL' ),
+	'6701AL',
 	34,
 	null,
 	'Stadsbrink',
@@ -478,9 +478,9 @@ values(
 	'0317410040'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '6602AH' ),
+	'6602AH',
 	7,
 	'B',
 	'Touwslagersbaan',
@@ -494,9 +494,9 @@ values(
 	'0242100100'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '9933KM' ),
+	'9933KM',
 	7,
 	null,
 	'De Wending',
@@ -510,9 +510,9 @@ values(
 	'0596743101'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '9712LH' ),
+	'9712LH',
 	1,
 	null,
 	'Boterdiep',
@@ -526,9 +526,9 @@ values(
 	'0505266600'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '9742BG' ),
+	'9742BG',
 	281,
 	'A',
 	'Zonnelaan',
@@ -542,9 +542,9 @@ values(
 	'0505710012'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '9727BX' ),
+	'9727BX',
 	322,
 	null,
 	'Paterswoldseweg',
@@ -558,12 +558,12 @@ values(
 	'0505250300'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '9603 AC' ),
+	'9603 AC',
 	76,
 	null,
-	'Gorecht-Oost',
+	'Gorecht Oost',
 	'HOOGEZAND'
 );
 
@@ -574,9 +574,9 @@ values(
 	'0598743103'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5975NV' ),
+	'5975NV',
 	29,
 	null,
 	'Kleefdijkseweg',
@@ -590,9 +590,9 @@ values(
 	'0774672895'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '6441CN' ),
+	'6441CN',
 	15,
 	17,
 	'Schiffelerstraat',
@@ -606,9 +606,9 @@ values(
 	'0452100121'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '6161EH' ),
+	'6161EH',
 	68,
 	null,
 	'Rijksweg Centrum',
@@ -622,9 +622,9 @@ values(
 	'0462100106'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '6373HW' ),
+	'6373HW',
 	54,
 	null,
 	'Hoogstraat',
@@ -638,9 +638,9 @@ values(
 	'0452100120'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '6211NG' ),
+	'6211NG',
 	18,
 	null,
 	'Koningin Emmaplein',
@@ -654,9 +654,9 @@ values(
 	'0433216747'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '6041GN' ),
+	'6041GN',
 	14,
 	null,
 	'Stationsplein',
@@ -670,9 +670,9 @@ values(
 	'0475310012'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '6131AX' ),
+	'6131AX',
 	49,
 	null,
 	'Stationsstraat',
@@ -686,9 +686,9 @@ values(
 	'0464000143'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5911KG' ),
+	'5911KG',
 	80,
 	null,
 	'Koninginnensingel',
@@ -702,9 +702,9 @@ values(
 	'0773510000'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '6006HS' ),
+	'6006HS',
 	8,
 	null,
 	'Dries',
@@ -718,9 +718,9 @@ values(
 	'0495520030'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '4611AG' ),
+	'4611AG',
 	2,
 	null,
 	'Antwerpsestraat',
@@ -734,9 +734,9 @@ values(
 	'0164247030'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '4819CK' ),
+	'4819CK',
 	51,
 	null,
 	'Graaf Hendrik III plein',
@@ -750,9 +750,9 @@ values(
 	'0765200345'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '4822WK' ),
+	'4822WK',
 	170,
 	null,
 	'Kesterenlaan',
@@ -766,9 +766,9 @@ values(
 	'0765422113'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5223DR' ),
+	'5223DR',
 	44,
 	null,
 	'Leonardo da Vinciplein',
@@ -782,9 +782,9 @@ values(
 	'0736233111'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5236AC' ),
+	'5236AC',
 	42,
 	null,
 	'Burg.Godschalxstraat',
@@ -798,9 +798,9 @@ values(
 	'0736444222'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5101VW' ),
+	'5101VW',
 	53,
 	null,
 	'Europaplein',
@@ -814,9 +814,9 @@ values(
 	'0162749101'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5654NN' ),
+	'5654NN',
 	351,
 	null,
 	'Karel de Grotelaan',
@@ -830,9 +830,9 @@ values(
 	'0402570999'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5642RK' ),
+	'5642RK',
 	97,
 	null,
 	'Dirigentplein',
@@ -846,9 +846,9 @@ values(
 	'0404100121'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5625EP' ),
+	'5625EP',
 	77,
 	null,
 	'Elckerlyclaan',
@@ -862,9 +862,9 @@ values(
 	'0402483060'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '4875CD' ),
+	'4875CD',
 	99,
 	'B',
 	'Markt',
@@ -878,9 +878,9 @@ values(
 	'0765081111'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5664RP' ),
+	'5664RP',
 	2,
 	'B',
 	'Dommeldalseweg',
@@ -894,9 +894,9 @@ values(
 	'0402854087'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5701NJ' ),
+	'5701NJ',
 	23,
 	null,
 	'Noord Koninginnewal',
@@ -910,9 +910,9 @@ values(
 	'0492552878'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5708ZK' ),
+	'5708ZK',
 	91,
 	null,
 	'De Plaetse',
@@ -926,9 +926,9 @@ values(
 	'0492743013'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '4901LL' ),
+	'4901LL',
 	13,
 	null,
 	'Heuveleind',
@@ -942,9 +942,9 @@ values(
 	'0162433838'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5341CH' ),
+	'5341CH',
 	5,
 	'A',
 	'Klaphekkenstraat',
@@ -955,12 +955,12 @@ insert into filiaal( adres_id, naam, telefoonnummer )
 values(
 	last_insert_id(),
 	'Oss',
-	'0412-655066'
+	'0412 655066'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '4701EV' ),
+	'4701EV',
 	8,
 	null,
 	'Boulevard',
@@ -974,9 +974,9 @@ values(
 	'0165565300'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5025VJ' ),
+	'5025VJ',
 	1,
 	null,
 	'Laarstraat',
@@ -990,9 +990,9 @@ values(
 	'0134686866'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5042HA' ),
+	'5042HA',
 	37,
 	null,
 	'Thomas van Aquinostraat',
@@ -1006,9 +1006,9 @@ values(
 	'0134637638'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5401CB' ),
+	'5401CB',
 	1921,
 	'/',
 	'Oranjestraat',
@@ -1022,9 +1022,9 @@ values(
 	'0413245009'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5554NL' ),
+	'5554NL',
 	5,
 	null,
 	'Dommelseweg',
@@ -1038,9 +1038,9 @@ values(
 	'0404100110'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5461HH' ),
+	'5461HH',
 	910,
 	'/',
 	'Bolkenplein',
@@ -1054,9 +1054,9 @@ values(
 	'0413320403'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5503BK' ),
+	'5503BK',
 	67,
 	null,
 	'Burgemeester van Hoofflaan',
@@ -1070,9 +1070,9 @@ values(
 	'0402556636'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '5144AG' ),
+	'5144AG',
 	138,
 	null,
 	'St. Antoniusstraat',
@@ -1086,9 +1086,9 @@ values(
 	'0416566088'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1813BA' ),
+	'1813BA',
 	61,
 	null,
 	'Vondelstraat',
@@ -1102,9 +1102,9 @@ values(
 	'0722100160'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1185HH' ),
+	'1185HH',
 	4,
 	null,
 	'Hueseplein',
@@ -1118,9 +1118,9 @@ values(
 	'0203457666'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1784AT' ),
+	'1784AT',
 	172,
 	null,
 	'Marsdiepstraat',
@@ -1134,9 +1134,9 @@ values(
 	'0223610040'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1111GJ' ),
+	'1111GJ',
 	13,
 	null,
 	'Burgemeester de Kievietstraat',
@@ -1150,9 +1150,9 @@ values(
 	'0204162800'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2026SV' ),
+	'2026SV',
 	1,
 	null,
 	'Tesselschadeplein',
@@ -1166,9 +1166,9 @@ values(
 	'0235400555'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2037AJ' ),
+	'2037AJ',
 	10,
 	null,
 	'Nice Passage',
@@ -1182,9 +1182,9 @@ values(
 	'0235404455'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1962CE' ),
+	'1962CE',
 	21,
 	null,
 	'Bachplein',
@@ -1198,9 +1198,9 @@ values(
 	'0251242226'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1701EK' ),
+	'1701EK',
 	14,
 	null,
 	'Raadhuisstraat',
@@ -1214,9 +1214,9 @@ values(
 	'0725762940'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2134DR' ),
+	'2134DR',
 	2,
 	null,
 	'Almkerkplein',
@@ -1230,9 +1230,9 @@ values(
 	'0235620388'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1621JB' ),
+	'1621JB',
 	45,
 	47,
 	'Veemarkt',
@@ -1246,9 +1246,9 @@ values(
 	'0229210318'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1972EJ' ),
+	'1972EJ',
 	77,
 	null,
 	'Kennemerlaan',
@@ -1262,9 +1262,9 @@ values(
 	'0255545910'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2201KN' ),
+	'2201KN',
 	40,
 	null,
 	'Kerkstraat',
@@ -1278,9 +1278,9 @@ values(
 	'0713610979'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1442CD' ),
+	'1442CD',
 	89,
 	null,
 	'Wormerplein',
@@ -1294,9 +1294,9 @@ values(
 	'0299420009'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1501CB' ),
+	'1501CB',
 	45,
 	null,
 	'Zuiddijk',
@@ -1310,9 +1310,9 @@ values(
 	'0756705501'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '7606HP' ),
+	'7606HP',
 	12,
 	null,
 	'Vincent van Goghplein',
@@ -1326,9 +1326,9 @@ values(
 	'0546459996'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '7413AE' ),
+	'7413AE',
 	80,
 	82,
 	'Brinkgeverweg',
@@ -1342,9 +1342,9 @@ values(
 	'0570621100'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '7512CA' ),
+	'7512CA',
 	3,
 	'B',
 	'Kuipersdijk',
@@ -1358,9 +1358,9 @@ values(
 	'0534824000'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '7521EE' ),
+	'7521EE',
 	223,
 	null,
 	'G.J. van Heekstraat',
@@ -1374,9 +1374,9 @@ values(
 	'0534300081'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '7553DK' ),
+	'7553DK',
 	11,
 	null,
 	'Boekeloseweg',
@@ -1390,9 +1390,9 @@ values(
 	'0742420203'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '8261AP' ),
+	'8261AP',
 	9,
 	null,
 	'Buitennieuwstraat',
@@ -1406,9 +1406,9 @@ values(
 	'0383331517'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '8021CW' ),
+	'8021CW',
 	5,
 	null,
 	'Diezerkade',
@@ -1422,9 +1422,9 @@ values(
 	'0384531339'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '8031HR' ),
+	'8031HR',
 	8,
 	null,
 	'Bachplein',
@@ -1438,9 +1438,9 @@ values(
 	'0384210080'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3192HD' ),
+	'3192HD',
 	90,
 	null,
 	'In de Fuik',
@@ -1454,9 +1454,9 @@ values(
 	'0102160075'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3011NS' ),
+	'3011NS',
 	70,
 	'A',
 	'Mariniersweg',
@@ -1470,9 +1470,9 @@ values(
 	'0104118070'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3039CG' ),
+	'3039CG',
 	72,
 	'A',
 	'Stadhoudersweg',
@@ -1486,9 +1486,9 @@ values(
 	'0104667411'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3053GE' ),
+	'3053GE',
 	93,
 	'A',
 	'Peppelweg',
@@ -1502,9 +1502,9 @@ values(
 	'0102184703'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3071AR' ),
+	'3071AR',
 	328,
 	330,
 	'Vuurplaat',
@@ -1518,9 +1518,9 @@ values(
 	'0102150370'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3068HG' ),
+	'3068HG',
 	303,
 	'B',
 	'Zevenkampsering',
@@ -1534,9 +1534,9 @@ values(
 	'0102205151'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3083 CN' ),
+	'3083 CN',
 	117,
 	null,
 	'Zuidplein',
@@ -1547,12 +1547,12 @@ insert into filiaal( adres_id, naam, telefoonnummer )
 values(
 	last_insert_id(),
 	'Rotterdam Zuidplein',
-	'010-3100700'
+	'010 3100700'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3811NM' ),
+	'3811NM',
 	3,
 	null,
 	'Prinses Julianaplein',
@@ -1566,9 +1566,9 @@ values(
 	'0334220422'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3825MA' ),
+	'3825MA',
 	11,
 	null,
 	'Wouda',
@@ -1582,9 +1582,9 @@ values(
 	'0332588883'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1401EV' ),
+	'1401EV',
 	1,
 	null,
 	'De Clinge',
@@ -1598,9 +1598,9 @@ values(
 	'0356914377'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3453HA' ),
+	'3453HA',
 	137,
 	null,
 	'Zandweg',
@@ -1614,9 +1614,9 @@ values(
 	'0306667737'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '1211KL' ),
+	'1211KL',
 	12,
 	null,
 	'Havenstraat',
@@ -1630,9 +1630,9 @@ values(
 	'0356289888'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3991AP' ),
+	'3991AP',
 	13,
 	'B',
 	'Lange Schaft',
@@ -1646,9 +1646,9 @@ values(
 	'0306390830'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3605KX' ),
+	'3605KX',
 	1190,
 	null,
 	'Bisonspoor',
@@ -1662,9 +1662,9 @@ values(
 	'0346283008'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3438AA' ),
+	'3438AA',
 	7,
 	null,
 	'Nedereindseweg',
@@ -1678,9 +1678,9 @@ values(
 	'0306072727'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3764BL' ),
+	'3764BL',
 	16,
 	null,
 	'Steenhoffstraat',
@@ -1694,9 +1694,9 @@ values(
 	'0356921783'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3514CC' ),
+	'3514CC',
 	69,
 	null,
 	'Adelaarstraat',
@@ -1710,9 +1710,9 @@ values(
 	'0302430777'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3552HB' ),
+	'3552HB',
 	21,
 	null,
 	'Marnixlaan',
@@ -1726,9 +1726,9 @@ values(
 	'0302452170'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3522BN' ),
+	'3522BN',
 	6,
 	'A',
 	'Rijnlaan',
@@ -1742,9 +1742,9 @@ values(
 	'0302888712'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3905LH' ),
+	'3905LH',
 	87,
 	null,
 	'Nieuweweg',
@@ -1758,9 +1758,9 @@ values(
 	'0318517055'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3443BV' ),
+	'3443BV',
 	12,
 	null,
 	'Leidsestraatweg',
@@ -1774,9 +1774,9 @@ values(
 	'0348411194'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3701HN' ),
+	'3701HN',
 	251,
 	null,
 	'Montaubanstraat',
@@ -1790,9 +1790,9 @@ values(
 	'0306932266'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '4461JA' ),
+	'4461JA',
 	7,
 	null,
 	'Zusterstraat',
@@ -1806,9 +1806,9 @@ values(
 	'0113748110'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '4331NA' ),
+	'4331NA',
 	10,
 	null,
 	'Pottenbakkerssingel',
@@ -1822,9 +1822,9 @@ values(
 	'0118673040'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '4537AL' ),
+	'4537AL',
 	68,
 	null,
 	'Axelsestraat',
@@ -1838,9 +1838,9 @@ values(
 	'0115622220'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '4381LM' ),
+	'4381LM',
 	1,
 	null,
 	'Badhuisstraat',
@@ -1854,9 +1854,9 @@ values(
 	'0118430334'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2402JG' ),
+	'2402JG',
 	5,
 	null,
 	'Concertweg',
@@ -1870,9 +1870,9 @@ values(
 	'0172417327'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2991EP' ),
+	'2991EP',
 	10,
 	null,
 	't Vlak',
@@ -1886,9 +1886,9 @@ values(
 	'0180439004'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2651DL' ),
+	'2651DL',
 	14,
 	null,
 	'Wilhelministraat',
@@ -1902,9 +1902,9 @@ values(
 	'0105110002'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2902HP' ),
+	'2902HP',
 	22,
 	null,
 	'Slotplein',
@@ -1918,9 +1918,9 @@ values(
 	'0104502373'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2611BK' ),
+	'2611BK',
 	12,
 	'A',
 	'Binnenwatersloot',
@@ -1934,9 +1934,9 @@ values(
 	'0152148124'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2624AK' ),
+	'2624AK',
 	123,
 	'B',
 	'Papsouwselaan',
@@ -1950,9 +1950,9 @@ values(
 	'0152855666'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3319GS' ),
+	'3319GS',
 	40,
 	null,
 	'Bamendaweg',
@@ -1966,9 +1966,9 @@ values(
 	'0786219200'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3317ES' ),
+	'3317ES',
 	73,
 	null,
 	'Van Oldenbarneveltplein',
@@ -1982,9 +1982,9 @@ values(
 	'0786515230'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '4201MB' ),
+	'4201MB',
 	21,
 	null,
 	'Kazerneplein',
@@ -1998,9 +1998,9 @@ values(
 	'0183653070'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2805BM' ),
+	'2805BM',
 	21,
 	null,
 	'Van Hogendorpplein',
@@ -2014,9 +2014,9 @@ values(
 	'0182551110'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3221AV' ),
+	'3221AV',
 	45,
 	null,
 	'Westkade',
@@ -2030,9 +2030,9 @@ values(
 	'0181338807'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2312AS' ),
+	'2312AS',
 	17,
 	null,
 	'Stationsweg',
@@ -2046,9 +2046,9 @@ values(
 	'0715141428'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2352VR' ),
+	'2352VR',
 	11,
 	'A',
 	'Laan van Berendrecht',
@@ -2062,9 +2062,9 @@ values(
 	'0712100240'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2265AC' ),
+	'2265AC',
 	16,
 	null,
 	'Damplein',
@@ -2078,9 +2078,9 @@ values(
 	'0703275959'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3142GH' ),
+	'3142GH',
 	8,
 	null,
 	'PC Hooftlaan',
@@ -2094,9 +2094,9 @@ values(
 	'0102540555'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2671JN' ),
+	'2671JN',
 	18,
 	null,
 	's Gravenzandseweg',
@@ -2110,9 +2110,9 @@ values(
 	'0174200000'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2631BM' ),
+	'2631BM',
 	24,
 	null,
 	'Koningin Julianastraat',
@@ -2126,9 +2126,9 @@ values(
 	'0153109491'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3262VR' ),
+	'3262VR',
 	3,
 	null,
 	'Beijerse Hof',
@@ -2142,9 +2142,9 @@ values(
 	'0186610050'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3354BW' ),
+	'3354BW',
 	64,
 	null,
 	'P S Gerbrandystraat',
@@ -2158,9 +2158,9 @@ values(
 	'0786416666'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2981BN' ),
+	'2981BN',
 	4,
 	null,
 	'Irisstraat',
@@ -2174,9 +2174,9 @@ values(
 	'0180497527'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2284XV' ),
+	'2284XV',
 	4,
 	null,
 	'Generaal Eisenhouwerplein',
@@ -2190,9 +2190,9 @@ values(
 	'0703948039'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3111AM' ),
+	'3111AM',
 	7,
 	null,
 	'Oranjestraat',
@@ -2206,9 +2206,9 @@ values(
 	'0104269414'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3201DB' ),
+	'3201DB',
 	16,
 	null,
 	'Gorsstraat',
@@ -2222,9 +2222,9 @@ values(
 	'0181619000'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3135BB' ),
+	'3135BB',
 	19,
 	'A',
 	'Van Hogendorplaan',
@@ -2238,9 +2238,9 @@ values(
 	'0104719877'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2274JR' ),
+	'2274JR',
 	234,
 	null,
 	'Koningin Julianalaan',
@@ -2254,9 +2254,9 @@ values(
 	'0703864044'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2253TS' ),
+	'2253TS',
 	26,
 	'B',
 	'Planciusplantsoen',
@@ -2270,9 +2270,9 @@ values(
 	'0715762211'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2242NE' ),
+	'2242NE',
 	37,
 	null,
 	'Oostdorperweg',
@@ -2286,9 +2286,9 @@ values(
 	'0705115556'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '2713RB' ),
+	'2713RB',
 	10,
 	null,
 	'van Leeuwenhoeklaan',
@@ -2302,9 +2302,9 @@ values(
 	'0793160211'
 );
 
-insert into adres( postcode_id, huisnummer, toevoeging, straatnaam, woonplaats)
+insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)
 values(
-	( select postcode_id from postcode where postcode = '3331HD' ),
+	'3331HD',
 	49,
 	null,
 	'Burgemeester Jansenlaan',

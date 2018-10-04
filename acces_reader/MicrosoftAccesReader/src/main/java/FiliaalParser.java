@@ -62,9 +62,7 @@ public class FiliaalParser {
 
                 // Print insert into adres query
                 printWriter.println("insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)" +
-                                    // TODO bespreken met jullie hoe dit precies moet.
-//                                    "values(( select postcode_id from postcode where postcode = '" + postcode + "' )" +
-                                    "\n" + "values(" +
+                                    "\nvalues(" +
                                     "\n\t'" + postcode +
                                     "',\n\t" + returnHuisnummer(huisnummer) +
                                     ",\n\t" + toevoeging +
@@ -93,8 +91,7 @@ public class FiliaalParser {
             return tempArr[0];
         }
         // else return huisnummer with all non digits replaced
-//        return huisnummer.replaceAll("\\D+","");
-        return null;
+        return huisnummer.replaceAll("\\D+","");
     }
 
 
