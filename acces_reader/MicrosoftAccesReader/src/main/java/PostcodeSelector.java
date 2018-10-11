@@ -6,7 +6,7 @@ import java.sql.*;
 public class PostcodeSelector {
 
     // The total amount of lines queried. This is fixed
-    final int LINECOUNT = 609147;
+    static int LINECOUNT = 609147;
     // Here you can set how many files you want
     static final int FILECOUNT = 1;
     // Calculate lines per file
@@ -28,8 +28,7 @@ public class PostcodeSelector {
 
         // Preparing and entering query
         Statement statement = connection.createStatement();
-
-        ResultSet set = statement.executeQuery("select 'insert into postcode(postcode, reeks, eerste_huis, laatste_huis, woonplaats, straatnaam) values(''' + replace(A13_POSTCODE,' ', '') + ''', ' + A13_REEKSIND + ', ' + A13_BREEKPUNT_VAN + ', ' + A13_BREEKPUNT_TEM + ', ''' + replace(A13_WOONPLAATS,'''', '') + ''', ''' + replace(A13_STRAATNAAM,'''', '') + ''');' from POSTCODES;");
+        ResultSet set = statement.executeQuery("select '(''' + replace(A13_POSTCODE,' ', '') + ''', ' + A13_REEKSIND + ', ' + A13_BREEKPUNT_VAN + ', ' + A13_BREEKPUNT_TEM + ', ''' + replace(A13_WOONPLAATS,'''', '') + ''', ''' + replace(A13_STRAATNAAM,'''', '') + ''')' from POSTCODES;");
         ResultSetMetaData resultSetMetaData = set.getMetaData();
 
         // Getting right column number from query and setting up 2 counters.
@@ -37,11 +36,16 @@ public class PostcodeSelector {
         int recordCount = 0;
         int fileCount = 2;
 
+        printWriter.println("INSERT INTO POSTCODE\n\t(postcode, reeks, eerste_huis, laatste_huis, woonplaats, straatnaam)\nVALUES");
+
         // Loop through the resultset
         while (set.next()) {
 
             // Print the record
-            printWriter.println(set.getString(columnNum));
+            printWriter.print(set.getString(columnNum));
+
+            if (set.isLast()) printWriter.println(";");
+            else printWriter.println(",");
 
             // Up the record count
             recordCount++;
@@ -56,7 +60,7 @@ public class PostcodeSelector {
                 fileCount++;
             }
         }
-        printWriter.print("commit;");
+        printWriter.print("COMMIT;");
         printWriter.close();
     }
 

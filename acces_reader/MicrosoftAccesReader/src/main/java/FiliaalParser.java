@@ -10,7 +10,7 @@ public class FiliaalParser {
     public static void main() throws FileNotFoundException {
         // File and Printwriter
         Scanner in = new Scanner(new File("C:/Users/indy/Google Drive/Mario's Pizza Hut/Aangeleverde data/Winkels Mario.txt"));
-        PrintWriter printWriter = new PrintWriter(new File("C:/git/marios-pizza-hut/insert filialen.sql"));
+        PrintWriter printWriter = new PrintWriter(new File("C:/git/marios-pizza-hut/inserts/insert filialen.sql"));
 
         // A String for every property
         String naam = "", straatnaam = "", huisnummer = "", toevoeging = "", woonplaats = "", postcode = "", telefoonnummer = "";
@@ -62,9 +62,7 @@ public class FiliaalParser {
 
                 // Print insert into adres query
                 printWriter.println("insert into adres( postcode, huisnummer, toevoeging, straatnaam, woonplaats)" +
-                                    // TODO bespreken met jullie hoe dit precies moet.
-//                                    "values(( select postcode_id from postcode where postcode = '" + postcode + "' )" +
-                                    "\n" + "values(" +
+                                    "\nvalues(" +
                                     "\n\t'" + postcode +
                                     "',\n\t" + returnHuisnummer(huisnummer) +
                                     ",\n\t" + toevoeging +
@@ -93,8 +91,7 @@ public class FiliaalParser {
             return tempArr[0];
         }
         // else return huisnummer with all non digits replaced
-//        return huisnummer.replaceAll("\\D+","");
-        return null;
+        return huisnummer.replaceAll("\\D+","");
     }
 
 
