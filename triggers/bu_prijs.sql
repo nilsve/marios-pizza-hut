@@ -1,0 +1,7 @@
+DELIMITER $$
+CREATE TRIGGER bu_prijs BEFORE UPDATE ON prijs
+FOR EACH ROW
+BEGIN
+    CALL check_prijs(new.bedrag);
+END$$   
+DELIMITER ;

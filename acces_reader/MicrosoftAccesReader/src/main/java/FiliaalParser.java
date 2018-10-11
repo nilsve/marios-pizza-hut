@@ -10,7 +10,7 @@ public class FiliaalParser {
     public static void main() throws FileNotFoundException {
         // File and Printwriter
         Scanner in = new Scanner(new File("C:/Users/indy/Google Drive/Mario's Pizza Hut/Aangeleverde data/Winkels Mario.txt"));
-        PrintWriter printWriter = new PrintWriter(new File("C:/git/marios-pizza-hut/insert filialen.sql"));
+        PrintWriter printWriter = new PrintWriter(new File("C:/git/marios-pizza-hut/inserts/insert filialen.sql"));
 
         // A String for every property
         String naam = "", straatnaam = "", huisnummer = "", toevoeging = "", woonplaats = "", postcode = "", telefoonnummer = "";

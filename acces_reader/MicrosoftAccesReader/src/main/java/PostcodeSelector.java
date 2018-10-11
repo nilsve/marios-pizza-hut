@@ -14,7 +14,7 @@ public class PostcodeSelector {
     // Printing each new file in System.out
     final boolean PRINT_FILES = true;
 
-    static File outputFile = new File("C:/git/marios-pizza-hut/insert postcodes.sql");
+    static File outputFile = new File("C:/git/marios-pizza-hut/inserts/insert postcodes.sql");
 
 
     public static void main() throws SQLException, FileNotFoundException {
