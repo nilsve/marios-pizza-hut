@@ -6,23 +6,23 @@ import java.sql.*;
 public class PostcodeSelector {
 
     // The total amount of lines queried. This is fixed
-    static int LINECOUNT = 609147;
+    static int TOTAL_RECORD_COUNT = 609146;
     // Here you can set how many files you want
-    static final int FILECOUNT = 1;
+    static final int FILECOUNT = 30;
     // Calculate lines per file
-    static final int LINES_PER_FILE = ( 609147 / FILECOUNT);
+    static final int LINES_PER_FILE = ( TOTAL_RECORD_COUNT / FILECOUNT) + FILECOUNT;
     // Printing each new file in System.out
     final boolean PRINT_FILES = true;
 
-    static File outputFile = new File( System.getProperty("user.dir") + "/../insert postcodes.sql");
-
+    static String workingDir = System.getProperty("user.dir").toString().replace("acces_reader\\MicrosoftAccesReader", "");
+    static File outputFile = new File( workingDir + "/inserts/insert postcodes.sql");
 
     public static void main() throws SQLException, FileNotFoundException {
         // File and Printwriter
         PrintWriter printWriter = new PrintWriter(outputFile);
 
         // Connection .mdb Acces file using Ucanacces
-        String mdbPath = "jdbc:ucanaccess://" + System.getProperty("user.dir") + "/../Postcode tabel.mdb";
+        String mdbPath = "jdbc:ucanaccess://C:/Users/indy/Google Drive/Mario's Pizza Hut/Aangeleverde data/Postcodes (Access).zip (Unzipped Files)/Postcode tabel.mdb";
 
         Connection connection = DriverManager.getConnection(mdbPath);
 
@@ -42,26 +42,30 @@ public class PostcodeSelector {
         while (set.next()) {
 
             // Print the record
-            printWriter.print(set.getString(columnNum));
-
-            if (set.isLast()) printWriter.println(";");
-            else printWriter.println(",");
+            printWriter.print("\t" + set.getString(columnNum));
 
             // Up the record count
             recordCount++;
 
+            if (set.isLast() || (recordCount % LINES_PER_FILE == 0)) printWriter.println(";");
+            else printWriter.println(",");
+
             // If user requested multiple files the printwriter gets closed and opened with a new filename
             if (recordCount % LINES_PER_FILE == 0) {
+                printWriter.print("COMMIT;");
                 printWriter.close();
-                outputFile = new File("C:/git/marios-pizza-hut/insert postcodes " + fileCount + ".sql");
+                outputFile = new File(workingDir + "/inserts/insert postcodes " + fileCount + ".sql");
                 // Printing file address
                 printFileName();
                 printWriter = new PrintWriter(outputFile);
+                printWriter.println("INSERT INTO POSTCODE\n\t(postcode, reeks, eerste_huis, laatste_huis, woonplaats, straatnaam)\nVALUES");
                 fileCount++;
             }
         }
         printWriter.print("COMMIT;");
         printWriter.close();
+
+        System.out.println("Total records fetched: " + recordCount);
     }
 
     private static void printFileName() {
