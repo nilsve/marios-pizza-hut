@@ -1,4 +1,6 @@
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS check_coupon;
  
 CREATE PROCEDURE check_coupon (IN kortingspercentage DECIMAL, korting INT, beschikbaar TINYINT(3))
 BEGIN

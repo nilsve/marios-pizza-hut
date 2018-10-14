@@ -1,4 +1,6 @@
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS check_bestelregel;
  
 CREATE PROCEDURE check_bestelregel (IN aantal INT(3))
 BEGIN

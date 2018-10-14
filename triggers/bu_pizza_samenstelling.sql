@@ -1,4 +1,7 @@
 DELIMITER $$
+
+DROP TRIGGER IF EXISTS bu_pizza_samenstelling;
+
 CREATE TRIGGER bu_pizza_samenstelling BEFORE UPDATE ON pizza_samenstelling
 FOR EACH ROW
 BEGIN

@@ -1,4 +1,6 @@
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS check_openingstijden;
  
 CREATE PROCEDURE check_openingstijden (IN dagnummer INT)
 BEGIN

@@ -1,4 +1,7 @@
 DELIMITER $$
+
+DROP TRIGGER IF EXISTS bi_openingstijden;
+
 CREATE TRIGGER bi_openingstijden BEFORE INSERT ON openingstijden
 FOR EACH ROW
 BEGIN

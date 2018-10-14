@@ -1,4 +1,6 @@
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS check_prijs;
  
 CREATE PROCEDURE check_prijs (IN bedrag DECIMAL(4,2))
 BEGIN

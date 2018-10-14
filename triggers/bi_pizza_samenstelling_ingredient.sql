@@ -1,4 +1,7 @@
 DELIMITER $$
+
+DROP TRIGGER IF EXISTS bi_pizza_samenstelling_ingredient;
+
 CREATE TRIGGER bi_pizza_samenstelling_ingredient BEFORE INSERT ON pizza_samenstelling_ingredient
 FOR EACH ROW
 BEGIN

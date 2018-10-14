@@ -1,4 +1,6 @@
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS check_pizza_ingredient;
  
 CREATE PROCEDURE check_pizza_ingredient (IN beschikbaar TINYINT(3))
 BEGIN

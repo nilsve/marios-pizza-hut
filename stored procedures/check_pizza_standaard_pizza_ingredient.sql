@@ -1,4 +1,6 @@
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS check_pizza_standaard_pizza_ingredient;
  
 CREATE PROCEDURE check_pizza_standaard_pizza_ingredient (IN aantal INT(2))
 BEGIN

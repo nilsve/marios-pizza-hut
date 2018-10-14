@@ -1,4 +1,6 @@
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS check_pizza_samenstelling;
  
 CREATE PROCEDURE check_pizza_samenstelling (IN spicy TINYINT(3), vegetarisch TINYINT(3), beschikbaar TINYINT(3))
 BEGIN
