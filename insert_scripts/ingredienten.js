@@ -1,6 +1,7 @@
-import XLSX from 'xlsx';
 import _ from 'lodash';
 import fs from 'fs';
+
+import {cleanTables, readFile, toBool} from './helpers';
 
 // We willen alle tables opschonen, maar categorie refereerd naar zichzelf, dus een DELETE FROM categorie gaat fout  
 let sql = `
@@ -8,14 +9,14 @@ let sql = `
 `;
 
 // Alle tables opschonen
-cleanTables([
+addSql(cleanTables([
     'pizza_standaard_pizza_ingredient',
     'pizza_standaard',
     'pizzabodem',
     'pizza_ingredient',
     'categorie',
     'prijs',
-]);
+]));
 
 const pizzas = readFile('pizza_ingredienten.xlsx');
  
@@ -109,30 +110,8 @@ function parsePizza(pizza) {
         aantal=${aantalkeer_ingredient};`);
 }
 
-// Ja / Nee waarden naar 1 / 0
-function toBool(nl) {
-    return nl.toLowerCase() === 'ja' ? 1 : 0;
-}
-
-function formatIngredient(ingredient) {
-    return `INSERT INTO `;
-}
-
 function addSql(_sql) {
     sql += _sql + "\n";
-}
-
-function cleanTables(tables) {
-    addSql(tables.map(table => `
-        DELETE FROM ${table};
-        ALTER TABLE ${table} AUTO_INCREMENT = 1;
-    `).join('\n'));
-}
-
-function readFile(fileName) {
-    const workbook = XLSX.readFile(`data/${fileName}`);
-    const sheetList = workbook.SheetNames;
-    return XLSX.utils.sheet_to_json(workbook.Sheets[sheetList[0]]);
 }
 
 fs.writeFileSync('./output.sql', sql, {encoding: 'utf8'})
