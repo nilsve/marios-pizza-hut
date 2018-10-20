@@ -1,2 +1,6 @@
 /acces_reader/MicrosoftAccesReader/.idea/
 *.class
+backoffice_applicatie/.idea/*.xml
+backoffice_applicatie/*.iml
+acces_reader/MicrosoftAccesReader/.idea/workspace.xml
+acces_reader/MicrosoftAccesReader/.idea/compiler.xml
