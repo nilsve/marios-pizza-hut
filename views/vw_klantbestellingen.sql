@@ -36,4 +36,4 @@ and         br.product_id     = pr.product_id
 and         b.bestelling_id   = ps.bestelling_id
 and         br.prijs_id       = p.prijs_id
 and         br.prijs_optie_id = po.prijs_id
-order by    b.besteldatum desc
+order by    b.besteldatum desc;
