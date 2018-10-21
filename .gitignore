@@ -2,3 +2,4 @@
 *.class
 backoffice_applicatie/.idea/*.xml
 backoffice_applicatie/*.iml
+backoffice_applicatie/.idea/libraries/
