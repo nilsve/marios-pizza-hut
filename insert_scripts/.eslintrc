@@ -1,0 +1,14 @@
+{
+ "extends": "airbnb",
+ "env": {
+ "node": true,
+ "es6": true,
+ "browser": true
+ },
+ "rules": {
+   "no-use-before-define": [2, {"functions": false, "classes": true}],
+   "object-curly-newline":"off",
+   "max-len":"off",
+   "no-unused-vars":"warn"
+ }
+}

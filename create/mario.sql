@@ -47,18 +47,6 @@ CREATE TABLE IF NOT EXISTS `prijs` (
 );
 
 -- -----------------------------------------------------
--- Table `betaaltype`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `betaaltype` ;
-
-CREATE TABLE IF NOT EXISTS `betaaltype` (
-  `betaaltype_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `type` VARCHAR(45) NOT NULL,
-  `omschrijving` VARCHAR(300) NULL,
-  PRIMARY KEY (`betaaltype_id`)
-);
-
--- -----------------------------------------------------
 -- Table `categorie`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `categorie` ;
@@ -300,7 +288,7 @@ DROP TABLE IF EXISTS `bestelling` ;
 
 CREATE TABLE IF NOT EXISTS `bestelling` (
   `bestelling_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `betaaltype_id` INT UNSIGNED,
+  `betaaltype` ENUM("ideal", "pin", "cash"),
   `filiaal_id` INT UNSIGNED NOT NULL,
   `klant_id` INT UNSIGNED NOT NULL,
   `besteldatum` DATETIME NULL,

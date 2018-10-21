@@ -7,10 +7,10 @@ export function cleanTables(tables) {
     `).join('\n');
 }
 
-export function readFile(fileName) {
+export function readFile(fileName, opts) {
     const workbook = XLSX.readFile(`data/${fileName}`);
     const sheetList = workbook.SheetNames;
-    return XLSX.utils.sheet_to_json(workbook.Sheets[sheetList[0]]);
+    return XLSX.utils.sheet_to_json(workbook.Sheets[sheetList[0]], opts);
 }
 
 // Ja / Nee waarden naar 1 / 0
