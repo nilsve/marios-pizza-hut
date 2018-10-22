@@ -3,10 +3,14 @@ package com.mario.pizza.hut;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.Dataset;
 import org.jfree.data.general.DefaultPieDataset;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,23 +22,23 @@ public class Gui extends JFrame {
 
     // Tab 1
     private JPanel tab1;
-    private JList viewList = new JList();
     private JScrollPane scrollPane;
     private JTable table;
     private DefaultTableModel tableModel;
+    private TableRowSorter<DefaultTableModel> sorter;
+    private JTextField sortField;
 
     // Tab 2
     private JPanel tab2;
-    private JList chartList = new JList();
     private JFreeChart pieChart;
     private ChartPanel chartPanel;
+    private DefaultPieDataset pieDataset = new DefaultPieDataset();
 
     private static ArrayList<String> viewDisplay = new ArrayList<>();
     private static ArrayList<String> viewNames = new ArrayList<>();
     private static ArrayList<String> chartDisplay = new ArrayList<>();
-    private static ArrayList<String> chartNames = new ArrayList<>();
 
-    public Gui(){
+    private Gui(){
         // Set windows look
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -52,10 +56,12 @@ public class Gui extends JFrame {
         viewDisplay.add("Standaardpizza's");
 
         chartDisplay.add("Filialen");
+        chartDisplay.add("Producten");
 
 
 
         // Fill the actual viewList with display data
+        JList viewList = new JList();
         fillList(viewList, viewDisplay);
         // Add listener
         viewList.addListSelectionListener(e -> {
@@ -75,38 +81,42 @@ public class Gui extends JFrame {
                 }
             }
         });
+        JList chartList = new JList();
         fillList(chartList, chartDisplay);
         // Add listener
         chartList.addListSelectionListener(e -> {
             boolean adjust = e.getValueIsAdjusting();
 
             if (!adjust) {
+                // Figure out selection
                 JList tempList = (JList) e.getSource();
-
                 int selections[] = tempList.getSelectedIndices();
-
+                String selection = "";
                 Object selectionValues[] = tempList.getSelectedValues();
 
+                // Setting selection value to String
                 for (int i = 0, n = selections.length; i < n; i++) {
-                    // Get index of chosen displayValue
-                    int index = viewDisplay.indexOf(selectionValues[i]);
-
-                    System.out.println(selectionValues[i]);
-
-                    switch (selectionValues[i].toString()) {
-                        case "Filialen" :
-                            System.out.println("hoidoei");
-                            fillPieChart("Filialen",
-                                            "select a.woonplaats, count(f.naam) filialen from filiaal f, adres a where f.adres_id = a.adres_id group by woonplaats having filialen > 1\n" +
-                                            "union all\n" +
-                                            "select distinct 'OVERIG' woonplaats, count(b.filialen) filialen from\n" +
-                                            "( select a.woonplaats, count(f.naam) filialen from filiaal f, adres a where f.adres_id = a.adres_id group by woonplaats having filialen = 1) b\n",
-                                        "woonplaats",
-                                        "filialen"
-                            );
-                        break;
-                    }
+                    selection = selectionValues[i].toString();
                 }
+
+                // Switch on String
+                switch (selection) {
+                    case "Filialen" :
+                        ResultSet filiaalSet = Connector.executeQuery(
+                                "select * from vw_filialen_per_woonplaats group by woonplaats having filialen > 1\n" +
+                                        "union all\n" +
+                                        "select 'OVERIG' woonplaats, count(woonplaats) filialen from vw_filialen_per_woonplaats where filialen = 1"
+                        );
+                        pieDataset.clear();
+                        fillPieChart(pieDataset, filiaalSet, "Filialen","woonplaats", "filialen");
+                        break;
+                    case "Producten" :
+                        ResultSet productSet = Connector.executeQuery("select prijs, count(prijs) producten from vw_alle_producten group by prijs");
+                        pieDataset.clear();
+                        fillPieChart(pieDataset, productSet, "Producten","prijs", "producten");
+                        break;
+                }
+                pieChart.fireChartChanged();
             }
         });
 
@@ -116,15 +126,46 @@ public class Gui extends JFrame {
         // Make table scrollable through scrollPane
         scrollPane.setViewportView(table);
 
-        // Add table and viewList to tab1
+        // Add ViewList and sortField to separate panel
+        sortField = new JTextField("Filter...");
+        sortField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) { sort(); }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) { sort(); }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) { sort(); }
+
+            private void sort() {
+                TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(((DefaultTableModel) table.getModel()));
+                sorter.setRowFilter(RowFilter.regexFilter("(?i)" + sortField.getText()));
+                table.setRowSorter(sorter);
+            }
+        });
+        JPanel listFilter = new JPanel();
+        listFilter.setLayout(new BoxLayout(listFilter, BoxLayout.Y_AXIS));
+        listFilter.add(viewList);
+        listFilter.add(sortField);
+
+        // Add scrollPane with table and viewList to tab1
         tab1 = new JPanel(new BorderLayout());
         tab1.add(scrollPane, BorderLayout.CENTER);
-        tab1.add(viewList, BorderLayout.NORTH);
+//        tab1.add(viewList, BorderLayout.NORTH);
+//        tab1.add(sortField, BorderLayout.NORTH);
+        tab1.add(listFilter, BorderLayout.NORTH);
 
         // Add pieChart and chartList to tab2
         tab2 = new JPanel(new BorderLayout());
         tab2.add(chartList, BorderLayout.NORTH);
-        fillPieChart("Selecteer een grafiek", "select 'Selecteer een grafiek' as naam, 1 hoeveelheid", "naam", "hoeveelheid");
+        fillPieChart(
+                pieDataset,
+                Connector.executeQuery("select 'Selecteer een grafiek' as naam, 1 hoeveelheid"),
+                "Selecteer een grafiek",
+                "naam",
+                "hoeveelheid"
+        );
         chartPanel = new ChartPanel(pieChart);
         tab2.add(chartPanel, BorderLayout.CENTER);
 
@@ -169,33 +210,33 @@ public class Gui extends JFrame {
 
     private void fillList(JList list, ArrayList<String> data) {
         // Turn ArrayList into normal Array for JList
-        String[] temp = new String[viewDisplay.size()];
+        String[] temp = new String[data.size()];
         data.toArray(temp);
 
         // Instantiate JList and adjust some settings
         list.setListData(temp);
         list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-        list.setVisibleRowCount(-1);
+        list.setVisibleRowCount(1);
         list.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     }
 
-    private void fillPieChart(String title, String query, String key, String dataColumn) {
-        ResultSet resultSet = Connector.executeQuery(query);
-        DefaultPieDataset pieDataset = new DefaultPieDataset();
+    private void fillPieChart(DefaultPieDataset dataset, ResultSet resultSet, String title, String key, String dataColumn) {
 
+        // Fill pieDataSet with resultSet
         try {
             while (resultSet.next()) {
-                pieDataset.setValue(
+                // Debug Query result
+                // System.out.printf("%20s - %20s\n", resultSet.getString(key), resultSet.getString(dataColumn));
+                dataset.setValue(
                         resultSet.getString(key),
                         Double.parseDouble(resultSet.getString(dataColumn)));
             }
         } catch (SQLException e) {
+            System.out.println("Error executing SQL query");
             e.printStackTrace();
         };
-
-        pieChart = ChartFactory.createPieChart(title, pieDataset, true, true, false);
+        pieChart = ChartFactory.createPieChart(title, dataset, true, true, false);
         pieChart.fireChartChanged();
     }
-
 }
