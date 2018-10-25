@@ -8,7 +8,7 @@ export default class BestellingenImporter extends Importer {
   constructor() {
     super('bestellingen.xlsx', [
       'klant',
-      'pizza_samenstelling_ingredient',
+      'pizza_samenstelling_pizza_ingredient',
       'bestelregel',
       'bestelling',
       'pizza_samenstelling',
@@ -17,36 +17,49 @@ export default class BestellingenImporter extends Importer {
     this.insertedKlanten = [];
   }
 
-  parseLine(bestelling) {
-    console.log(bestelling)
-    const { klantnaam } = bestelling;
+  parseLine(data) {
+    const { klantnaam } = data;
 
     // Klant gevens
     if (klantnaam && !_.includes(this.insertedKlanten, klantnaam)) {
-      this.parseKlant(bestelling);
+      this.parseKlant(data);
       this.insertedKlanten.push(klantnaam);
     }
 
     // Bestelling
-    if (bestelling.besteldatum) {
+    if (data.besteldatum) {
       // Nieuwe bestelling
 
-      console.log(dateToJs(bestelling.besteldatum));
+      const formattedBesteldatum = dateToJs(data.besteldatum);
+      const afhaalBezorgtijd = data['Afhaal/Bezorgtijd'];
 
+      const formattedAfhaalBezorgtijd = afhaalBezorgtijd !== 'Zo snel mogelijk' ? `'${dateToJs(afhaalBezorgtijd)}'` : 'NULL';
+
+      const filiaal = data['Winkelnaam (uniek)'];
       this.addSql(`
-              INSERT INTO bestelling
-              SET betaaltype = 'cash',
-                  besteldatum = '${bestelling.besteldatum}',
-                  afhaal_bezorgen = '${bestelling['Afhalen/Bezorgen']}',
-                  afhaal_bezorg_tijd = '${bestelling['Afhaal/Bezorgtijd']}',
-                  klant_id = @bestelling_klant_id;
-              SET @bestelling_id = LAST_INSERT_ID();
-          `);
+        SET @filiaal_id = (SELECT filiaal_id FROM filiaal WHERE naam="${filiaal}");
+        
+        INSERT INTO bestelling
+        SET betaaltype = 'cash',
+            filiaal_id = @filiaal_id,
+            besteldatum = '${formattedBesteldatum}',
+            afhaal_bezorgen = '${data['Afhalen/Bezorgen']}',
+            afhaal_bezorg_tijd = ${formattedAfhaalBezorgtijd},
+            klant_id = @bestelling_klant_id,
+            totaalprijs=${data.totaalPrijs};
+        SET @bestelling_id = LAST_INSERT_ID();
+        `);
     }
 
-    const productNaam = bestelling['Product naam'];
-    const pizzabodem = bestelling['Gekozen pizzabodem'];
-    const pizzasaus = bestelling['Gekozen Pizzasaus'];
+    const productNaam = data['Product naam'];
+    const pizzabodem = data['Gekozen pizzabodem'];
+
+    let formattedPizzabodem = null;
+    if (pizzabodem) {
+      formattedPizzabodem = pizzabodem.substr(0, pizzabodem.indexOf('(') - 1);
+    }
+
+    const pizzasaus = data['Gekozen Pizzasaus'];
 
     if (productNaam) {
       // In de product kolom kan je geen onderscheid maken of het een pizza is of bvb een toetje.
@@ -54,8 +67,54 @@ export default class BestellingenImporter extends Importer {
       if (pizzabodem) {
         // Het is een pizza
         this.addSql(`
+          SET @pizza_standaard_id = (
+            SELECT pizza_standaard_id FROM pizza_standaard WHERE naam="${productNaam}"
+          );
           
+          INSERT INTO prijs SET bedrag=${data['Betaalde Product Prijs']}, begindatum=NOW(), einddatum=NOW();
+          SET @pizza_prijs_id = LAST_INSERT_ID();
         `);
+
+        if (data['Extra ingredienten']) {
+          const ingredientPrijs = data['Betaalde Prijs extra ingredienten'];
+
+          this.addSql(`
+            INSERT INTO prijs SET bedrag=${ingredientPrijs}, begindatum=NOW(), einddatum=NOW();
+            SET @ingredient_prijs_id = LAST_INSERT_ID();
+          `);
+        }
+
+        for (let i = 0; i < data.Aantal; i++) {
+          this.addSql(`
+            INSERT INTO pizza_samenstelling
+            SET bestelling_id = @bestelling_id,
+                pizzabodem_id = (SELECT pizzabodem_id FROM pizzabodem WHERE naam="${formattedPizzabodem}"),
+                naam = (SELECT naam FROM pizza_standaard WHERE pizza_standaard_id = @pizza_standaard_id),
+                omschrijving = (SELECT omschrijving FROM pizza_standaard WHERE pizza_standaard_id = @pizza_standaard_id),
+                spicy = (SELECT spicy FROM pizza_standaard WHERE pizza_standaard_id = @pizza_standaard_id),
+                vegetarisch = (SELECT vegetarisch FROM pizza_standaard WHERE pizza_standaard_id = @pizza_standaard_id),
+                pizza_standaard_prijs_id = @pizza_prijs_id,
+                pizza_standaard_bezorgtoeslag_id = (SELECT bezorgtoeslag_id FROM pizza_standaard WHERE pizza_standaard_id = @pizza_standaard_id);
+            SET @pizza_samenstelling_id = LAST_INSERT_ID();
+            
+            CALL copyIngredienten(@pizza_standaard_id, @pizza_samenstelling_id);
+          `);
+
+          if (data['Extra ingredienten']) {
+            const extra = data['Extra ingredienten'];
+            const aantalExtra = parseInt(extra.substr(0, extra.indexOf('x')), 10);
+            const ingredient = extra.substr(extra.indexOf(' ') + 1, extra.length);
+            for (let x = 0; x < aantalExtra; x++) {
+              this.addSql(`
+                INSERT INTO pizza_samenstelling_pizza_ingredient 
+                SET pizza_samenstelling_id=@pizza_samenstelling_id,
+                    pizza_ingredient_id=(SELECT pizza_ingredient_id FROM pizza_ingredient WHERE naam='${ingredient}'),
+                    prijs_id=@ingredient_prijs_id,
+                    is_standaard=0;
+              `);
+            }
+          }
+        }
       } else {
         // Het is een product
       }
@@ -64,6 +123,7 @@ export default class BestellingenImporter extends Importer {
 
   parseKlant(klantGegevens) {
     const huisInclToevoeging = klantGegevens['Huisnr incl. toevoeging'];
+    const postcode = klantGegevens.Postcode;
 
     let huisnummer = '';
     let toevoeging = '';
@@ -76,14 +136,6 @@ export default class BestellingenImporter extends Importer {
       }
       toevoeging = huisInclToevoeging.substr(i, huisInclToevoeging.length);
     }
-    this.addSql(`
-              INSERT INTO adres SET 
-                  postcode="${klantGegevens.Postcode}", 
-                  huisnummer="${huisnummer}", 
-                  toevoeging="${toevoeging}",
-                  woonplaats='';
-              SET @klant_adres_id = LAST_INSERT_ID();
-          `);
 
     let voornaam = '';
     let achternaam = '';
@@ -108,7 +160,9 @@ export default class BestellingenImporter extends Importer {
               SET adres_id=@klant_adres_id, 
                   telefoonnummer="${klantGegevens.Telefoonnummer}", 
                   voornaam="${voornaam}", 
-                  achternaam="${achternaam}";
+                  achternaam="${achternaam}",
+                  huisnummer='${huisInclToevoeging}',
+                  postcode='${postcode}';
               SET @bestelling_klant_id = LAST_INSERT_ID();
           `);
   }

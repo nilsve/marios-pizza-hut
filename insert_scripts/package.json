@@ -6,15 +6,7 @@
   "scripts": {
     "babel-node": "babel-node --inspect --debug-brk --presets=latest",
     "start": "npm run babel-node -- ./main.js",
-    "ingredienten": "npm run babel-node -- ./ingredienten.js",
-    "bestellingen": "npm run babel-node -- ./bestellingen.js",
-    "pizzabodems": "npm run babel-node -- ./pizzabodems.js",
-    "producten": "npm run babel-node -- ./producten.js",
     "inspect": "npm run babel-node -- ./main.js",
-    "inspect-pizzabodems": "npm run babel-node -- ./pizzabodems.js",
-    "inspect-ingredienten": "npm run babel-node -- ./ingredienten.js",
-    "inspect-bestellingen": "npm run babel-node -- ./bestellingen.js",
-    "inspect-producten": "npm run babel-node -- ./producten.js",
     "build": "babel src -d dist"
   },
   "author": "",
@@ -27,6 +19,7 @@
     "eslint-plugin-react": "^7.11.1",
     "excel-date-to-js": "^1.0.0",
     "lodash": "^4.17.11",
+    "moment": "^2.22.2",
     "xlsx": "^0.14.0"
   },
   "devDependencies": {

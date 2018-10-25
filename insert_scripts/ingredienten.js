@@ -22,8 +22,7 @@ export default class ProductenImporter extends Importer {
       INSERT INTO prijs SET bedrag=0, begindatum=NOW();
       SET @pizzabodem_prijs_id = LAST_INSERT_ID();
 
-      INSERT INTO pizzabodem SET naam = "Medium Pizza", omschrijving = "Medium Pizza", categorie_id = @pizzabodems_categorie_id, diameter=10, beschikbaar = 1, prijs_id = @pizzabodem_prijs_id;
-      SET @standaard_pizzabodem_id = LAST_INSERT_ID();
+      SET @standaard_pizzabodem_id = (SELECT pizzabodem_id FROM pizzabodem WHERE naam='Medium Pizza');
     `);
 
     this.insertedCategorien = [];

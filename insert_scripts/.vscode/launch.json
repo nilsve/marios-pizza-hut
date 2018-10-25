@@ -7,28 +7,6 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Inspect Bestellingen",
-            "runtimeExecutable": "npm",
-            "runtimeArgs": [
-                "run",
-                "inspect-bestellingen"
-            ],
-            "port": 9229
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Inspect Pizzabodems",
-            "runtimeExecutable": "npm",
-            "runtimeArgs": [
-                "run",
-                "inspect-pizzabodems"
-            ],
-            "port": 9229
-        },
-        {
-            "type": "node",
-            "request": "launch",
             "name": "Inspect",
             "runtimeExecutable": "npm",
             "runtimeArgs": [

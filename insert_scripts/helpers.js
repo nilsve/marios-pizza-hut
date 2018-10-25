@@ -1,4 +1,5 @@
 import XLSX from 'xlsx';
+import moment from 'moment';
 import { getJsDateFromExcel } from 'excel-date-to-js';
 
 export function cleanTables(tables) {
@@ -23,5 +24,6 @@ export function dateToJs(date) {
   // Lelijke truuk omdat de tijd een uur te ver is
   const d = getJsDateFromExcel(date);
   d.setHours(d.getHours() - 1);
-  return d;
+
+  return moment(d).format('YYYY-MM-DD HH-mm-ss');
 }

@@ -103,14 +103,12 @@ DROP TABLE IF EXISTS `klant` ;
 
 CREATE TABLE IF NOT EXISTS `klant` (
   `klant_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `adres_id` INT UNSIGNED NULL,
   `telefoonnummer` VARCHAR (50) NOT NULL,
   `postcode` VARCHAR(6) NULL,
   `huisnummer` VARCHAR(10) NULL,
   `voornaam` VARCHAR(25) NOT NULL,
   `achternaam` VARCHAR(55) NOT NULL,
-  PRIMARY KEY (`klant_id`),
-  CONSTRAINT FOREIGN KEY (`adres_id`) REFERENCES `adres` (`adres_id`)
+  PRIMARY KEY (`klant_id`)
 );
 
 
@@ -185,8 +183,6 @@ CREATE TABLE IF NOT EXISTS `pizza_samenstelling` (
     CHECK ( spicy IN (0, 1) ),
   `vegetarisch` TINYINT(1) NOT NULL
     CHECK ( vegetarisch IN (0, 1) ),
-  `beschikbaar` TINYINT(1) NOT NULL DEFAULT 1
-    CHECK ( beschikbaar IN (0, 1) ),
   `pizza_standaard_prijs_id` INT UNSIGNED NULL,
   `pizza_standaard_bezorgtoeslag_id` INT UNSIGNED NULL,
   PRIMARY KEY (`pizza_samenstelling_id`),
@@ -197,17 +193,18 @@ CREATE TABLE IF NOT EXISTS `pizza_samenstelling` (
 );
 
 -- -----------------------------------------------------
--- Table `pizza_samenstelling_ingredient`
+-- Table `pizza_samenstelling_pizza_ingredient`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `pizza_samenstelling_ingredient` ;
+DROP TABLE IF EXISTS `pizza_samenstelling_pizza_ingredient` ;
 
-CREATE TABLE IF NOT EXISTS `pizza_samenstelling_ingredient` (
+CREATE TABLE IF NOT EXISTS `pizza_samenstelling_pizza_ingredient` (
+  `pizza_samenstelling_pizza_ingredient_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `pizza_samenstelling_id` INT UNSIGNED NOT NULL,
   `pizza_ingredient_id` INT UNSIGNED NOT NULL,
   `prijs_id` INT UNSIGNED NOT NULL,
   `is_standaard` TINYINT(1) NULL
     CHECK ( is_standaard IN (0, 1) ),    
-  PRIMARY KEY (`pizza_samenstelling_id`, `pizza_ingredient_id`),
+  PRIMARY KEY (`pizza_samenstelling_pizza_ingredient_id`),
   CONSTRAINT FOREIGN KEY (`prijs_id`) REFERENCES `prijs` (`prijs_id`),
   CONSTRAINT FOREIGN KEY (`pizza_ingredient_id`) REFERENCES `pizza_ingredient` (`pizza_ingredient_id`),
   CONSTRAINT FOREIGN KEY (`pizza_samenstelling_id`) REFERENCES `pizza_samenstelling` (`pizza_samenstelling_id`)
@@ -298,7 +295,6 @@ CREATE TABLE IF NOT EXISTS `bestelling` (
   `totaalprijs` INT NOT NULL,
   PRIMARY KEY (`bestelling_id`),
   CONSTRAINT FOREIGN KEY (`filiaal_id`) REFERENCES `filiaal` (`filiaal_id`),
-  CONSTRAINT FOREIGN KEY (`betaaltype_id`) REFERENCES `betaaltype` (`betaaltype_id`),
   CONSTRAINT FOREIGN KEY (`klant_id`) REFERENCES `klant` (`klant_id`),
   CONSTRAINT FOREIGN KEY (`coupon_id`) REFERENCES `coupon` (`coupon_id`)
 );
