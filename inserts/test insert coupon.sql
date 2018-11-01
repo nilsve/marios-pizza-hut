@@ -1,0 +1,21 @@
+insert into coupon (filiaal_id, couponcode, omschrijving, type, kortingspercentage, korting, beschikbaar)
+values (null, '00001', '5 procent korting', 'percentage', 5, null, '1');
+insert into coupon (filiaal_id, couponcode, omschrijving, type, kortingspercentage, korting, beschikbaar)
+values (null, '00002', '10 procent korting', 'percentage', 10, null, '1');
+insert into coupon (filiaal_id, couponcode, omschrijving, type, kortingspercentage, korting, beschikbaar)
+values (null, '00003', '15 procent korting', 'percentage', 15, null, '1');
+insert into coupon (filiaal_id, couponcode, omschrijving, type, kortingspercentage, korting, beschikbaar)
+values (null, '00004', '20 procent korting', 'percentage', 20, null, '1');
+
+insert into coupon (filiaal_id, couponcode, omschrijving, type, kortingspercentage, korting, beschikbaar)
+values (null, '00005', '1 euro korting', 'bedrag', null, 1, '1');
+insert into coupon (filiaal_id, couponcode, omschrijving, type, kortingspercentage, korting, beschikbaar)
+values (null, '00006', '2 euro korting', 'bedrag', null, 2, '1');
+insert into coupon (filiaal_id, couponcode, omschrijving, type, kortingspercentage, korting, beschikbaar)
+values (null, '00007', '3 euro korting', 'bedrag', null, 3, '1');
+insert into coupon (filiaal_id, couponcode, omschrijving, type, kortingspercentage, korting, beschikbaar)
+values (null, '00008', '4 euro korting', 'bedrag', null, 4, '1');
+insert into coupon (filiaal_id, couponcode, omschrijving, type, kortingspercentage, korting, beschikbaar)
+values (null, '00009', '5 euro korting', 'bedrag', null, 5, '1');
+insert into coupon (filiaal_id, couponcode, omschrijving, type, kortingspercentage, korting, beschikbaar)
+values (null, '00010', '10 euro korting', 'bedrag', null, 10, '1')
