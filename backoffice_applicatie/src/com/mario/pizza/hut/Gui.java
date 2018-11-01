@@ -3,7 +3,6 @@ package com.mario.pizza.hut;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.Dataset;
 import org.jfree.data.general.DefaultPieDataset;
 
 import javax.swing.*;
@@ -29,6 +28,7 @@ public class Gui extends JFrame {
     private JTextField sortField;
 
     // Tab 2
+    private final String chartDisplay1 = "Filialen per woonplaats", chartDisplay2 = "Productenprijzen";
     private JPanel tab2;
     private JFreeChart pieChart;
     private ChartPanel chartPanel;
@@ -55,8 +55,8 @@ public class Gui extends JFrame {
         viewDisplay.add("Klantbestellingen");
         viewDisplay.add("Standaardpizza's");
 
-        chartDisplay.add("Filialen");
-        chartDisplay.add("Producten");
+        chartDisplay.add(chartDisplay1);
+        chartDisplay.add(chartDisplay2);
 
 
 
@@ -101,16 +101,16 @@ public class Gui extends JFrame {
 
                 // Switch on String
                 switch (selection) {
-                    case "Filialen" :
+                    case chartDisplay1 :
                         ResultSet filiaalSet = Connector.executeQuery(
-                                "select * from vw_filialen_per_woonplaats group by woonplaats having filialen > 1\n" +
-                                        "union all\n" +
-                                        "select 'OVERIG' woonplaats, count(woonplaats) filialen from vw_filialen_per_woonplaats where filialen = 1"
+                                "select * from vw_filialen_per_woonplaats group by woonplaats having filialen > 1\n"
+//                                        "union all\n" +
+//                                        "select 'OVERIG' woonplaats, count(woonplaats) filialen from vw_filialen_per_woonplaats where filialen = 1"
                         );
                         pieDataset.clear();
                         fillPieChart(pieDataset, filiaalSet, "Filialen","woonplaats", "filialen");
                         break;
-                    case "Producten" :
+                    case chartDisplay2 :
                         ResultSet productSet = Connector.executeQuery("select prijs, count(prijs) producten from vw_alle_producten group by prijs");
                         pieDataset.clear();
                         fillPieChart(pieDataset, productSet, "Producten","prijs", "producten");
@@ -152,8 +152,6 @@ public class Gui extends JFrame {
         // Add scrollPane with table and viewList to tab1
         tab1 = new JPanel(new BorderLayout());
         tab1.add(scrollPane, BorderLayout.CENTER);
-//        tab1.add(viewList, BorderLayout.NORTH);
-//        tab1.add(sortField, BorderLayout.NORTH);
         tab1.add(listFilter, BorderLayout.NORTH);
 
         // Add pieChart and chartList to tab2
