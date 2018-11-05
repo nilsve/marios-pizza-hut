@@ -64,15 +64,17 @@ export default class BestellingenImporter extends Importer {
     if (productNaam) {
       // In de product kolom kan je geen onderscheid maken of het een pizza is of bvb een toetje.
       // Je kan dit aan de gekozen pizzabodem zien
+
+      this.addSql(`
+        INSERT INTO prijs SET bedrag=${data['Betaalde Product Prijs']}, begindatum=NOW(), einddatum=NOW();
+        SET @betaalde_prijs_id = LAST_INSERT_ID();
+      `);
       if (pizzabodem) {
         // Het is een pizza
         this.addSql(`
           SET @pizza_standaard_id = (
             SELECT pizza_standaard_id FROM pizza_standaard WHERE naam="${productNaam}"
           );
-          
-          INSERT INTO prijs SET bedrag=${data['Betaalde Product Prijs']}, begindatum=NOW(), einddatum=NOW();
-          SET @pizza_prijs_id = LAST_INSERT_ID();
         `);
 
         if (data['Extra ingredienten']) {
@@ -93,7 +95,7 @@ export default class BestellingenImporter extends Importer {
                 omschrijving = (SELECT omschrijving FROM pizza_standaard WHERE pizza_standaard_id = @pizza_standaard_id),
                 spicy = (SELECT spicy FROM pizza_standaard WHERE pizza_standaard_id = @pizza_standaard_id),
                 vegetarisch = (SELECT vegetarisch FROM pizza_standaard WHERE pizza_standaard_id = @pizza_standaard_id),
-                pizza_standaard_prijs_id = @pizza_prijs_id,
+                pizza_standaard_prijs_id = @betaalde_prijs_id,
                 pizza_standaard_bezorgtoeslag_id = (SELECT bezorgtoeslag_id FROM pizza_standaard WHERE pizza_standaard_id = @pizza_standaard_id);
             SET @pizza_samenstelling_id = LAST_INSERT_ID();
             
@@ -117,6 +119,14 @@ export default class BestellingenImporter extends Importer {
         }
       } else {
         // Het is een product
+        this.addSql(`
+          INSERT INTO bestelregel
+          SET bestelling_id=@bestelling_id,
+              product_id=(SELECT product_id FROM product WHERE naam="${data['Product naam']}"),
+              prijs_id=@betaalde_prijs_id,
+              aantal=${data.Aantal};
+
+        `);
       }
     }
   }

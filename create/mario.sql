@@ -309,14 +309,12 @@ CREATE TABLE IF NOT EXISTS `bestelregel` (
   `bestelling_id` INT UNSIGNED NOT NULL,
   `product_id` INT UNSIGNED NOT NULL,
   `prijs_id` INT UNSIGNED NULL,
-  `prijs_optie_id` INT UNSIGNED NULL,
   `aantal` INT (3) NOT NULL
     CHECK ( aantal >= 1 ),
   PRIMARY KEY (`bestelregel_id`),
   CONSTRAINT FOREIGN KEY (`bestelling_id`) REFERENCES `bestelling` (`bestelling_id`),
   CONSTRAINT FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
-  CONSTRAINT FOREIGN KEY (`prijs_id`) REFERENCES `prijs` (`prijs_id`),
-  CONSTRAINT FOREIGN KEY (`prijs_optie_id`) REFERENCES `prijs` (`prijs_id`)
+  CONSTRAINT FOREIGN KEY (`prijs_id`) REFERENCES `prijs` (`prijs_id`)
 );
 
 SET FOREIGN_KEY_CHECKS = 1;
