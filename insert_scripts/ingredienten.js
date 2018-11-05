@@ -1,81 +1,60 @@
 import _ from 'lodash';
-import fs from 'fs';
+import Importer from './Importer';
+import { toBool } from './helpers';
 
-import {cleanTables, readFile, toBool} from './helpers';
+export default class ProductenImporter extends Importer {
+  constructor() {
+    super('pizza_ingredienten.xlsx', [
+      'pizza_standaard_pizza_ingredient',
+      'pizza_standaard',
+      'pizza_ingredient',
+      'categorie',
+      'prijs',
+    ]);
 
-// We willen alle tables opschonen, maar categorie refereerd naar zichzelf, dus een DELETE FROM categorie gaat fout  
-let sql = `
-    UPDATE categorie SET hoofdcategorie_id = NULL;
-`;
+    this.addSql(`
+      INSERT INTO categorie SET naam = "Pizza's";
+      SET @hoofdcategorie_id = LAST_INSERT_ID();
 
-// Alle tables opschonen
-addSql(cleanTables([
-    'pizza_standaard_pizza_ingredient',
-    'pizza_standaard',
-    'pizzabodem',
-    'pizza_ingredient',
-    'categorie',
-    'prijs',
-]));
+      INSERT INTO categorie SET naam = "Alle ingredienten";
+      SET @ingredienten_categorie_id = LAST_INSERT_ID();
 
-const pizzas = readFile('pizza_ingredienten.xlsx');
- 
-sql += `
-    INSERT INTO categorie SET naam = "Pizza's";
-    SET @hoofdcategorie_id = LAST_INSERT_ID();
-`;
+      INSERT INTO prijs SET bedrag=0, begindatum=NOW();
+      SET @pizzabodem_prijs_id = LAST_INSERT_ID();
 
-sql += `
-    INSERT INTO categorie SET naam = "Pizzabodems";
-    SET @pizzabodems_categorie_id = LAST_INSERT_ID();
-`;
+      SET @standaard_pizzabodem_id = (SELECT pizzabodem_id FROM pizzabodem WHERE naam='Medium Pizza');
+    `);
 
-sql += `
-    INSERT INTO categorie SET naam = "Alle ingredienten";
-    SET @ingredienten_categorie_id = LAST_INSERT_ID();
-`;
+    this.insertedCategorien = [];
+    this.insertedPizzas = [];
+    this.insertedIngredienten = [];
+    this.insertedSauzen = [];
+  }
 
-sql += `
-    INSERT INTO prijs SET bedrag=1, begindatum=NOW();
-    SET @pizzabodem_prijs_id = LAST_INSERT_ID();
-`;
+  parseLine(data) {
+    const { aantalkeer_ingredient, subcategorie, productnaam: naam, spicy, bezorgtoeslag, vegetarisch, ingredientnaam: ingredient, pizzasaus_standaard: saus, prijs } = data;
 
-sql += `
-    INSERT INTO pizzabodem SET naam = "Pizza's", omschrijving = "Alle pizza's", categorie_id = @pizzabodems_categorie_id, diameter=10, beschikbaar = 1, prijs_id = @pizzabodem_prijs_id;
-    SET @standaard_pizzabodem_id = LAST_INSERT_ID();
-`;
-
-const insertedCategorien = [];
-const insertedPizzas = [];
-const insertedIngredienten = [];
-const insertedSauzen = [];
-
-pizzas.forEach(parsePizza);
-
-function parsePizza(pizza) {
-    const {aantalkeer_ingredient, subcategorie, productnaam: naam, spicy, bezorgtoeslag, vegetarisch, ingredientnaam: ingredient, pizzasaus_standaard: saus, prijs} = pizza;
-
-    if (!_.includes(insertedCategorien, subcategorie)) {
-        addSql(`INSERT INTO categorie SET hoofdcategorie_id = @hoofdcategorie_id, naam="${subcategorie}";`);
-        insertedCategorien.push(subcategorie);
+    if (!_.includes(this.insertedCategorien, subcategorie)) {
+      this.addSql(`INSERT INTO categorie SET hoofdcategorie_id = @hoofdcategorie_id, naam="${subcategorie}";`);
+      this.insertedCategorien.push(subcategorie);
     }
 
-    if (!_.includes(insertedSauzen, saus)) {
-        addSql(`
+    if (!_.includes(this.insertedSauzen, saus)) {
+      this.addSql(`
             INSERT INTO prijs SET bedrag=1, begindatum=NOW();
             INSERT INTO pizza_ingredient SET categorie_id = @ingredienten_categorie_id, prijs_id = LAST_INSERT_ID(), naam="${saus}";
         `);
-        insertedSauzen.push(saus);
+      this.insertedSauzen.push(saus);
     }
 
-    if (!_.includes(insertedPizzas, naam)) {
-        if (bezorgtoeslag) {
-            addSql(`
+    if (!_.includes(this.insertedPizzas, naam)) {
+      if (bezorgtoeslag) {
+        this.addSql(`
                 INSERT INTO prijs SET bedrag=${bezorgtoeslag}, begindatum=NOW();
                 SET @pizza_bezorgtoeslag_id = LAST_INSERT_ID();
             `)
-        }
-        addSql(`INSERT INTO prijs SET bedrag=${prijs}, begindatum=NOW();
+      }
+      this.addSql(`INSERT INTO prijs SET bedrag=${prijs}, begindatum=NOW();
                 SET @pizza_prijs_id = LAST_INSERT_ID();
 
                 INSERT INTO pizza_standaard 
@@ -88,30 +67,25 @@ function parsePizza(pizza) {
                     vegetarisch = ${toBool(vegetarisch)};
         `);
 
-        // Saus
-        addSql(`INSERT INTO pizza_standaard_pizza_ingredient
+      // Saus
+      this.addSql(`INSERT INTO pizza_standaard_pizza_ingredient
             SET pizza_standaard_id = (SELECT pizza_standaard_id FROM pizza_standaard WHERE naam="${naam}"),
             pizza_ingredient_id = (SELECT pizza_ingredient_id FROM pizza_ingredient WHERE naam="${saus}");`);
 
-        insertedPizzas.push(naam);
+      this.insertedPizzas.push(naam);
     }
 
-    if (!_.includes(insertedIngredienten, ingredient)) {
-        addSql(`
+    if (!_.includes(this.insertedIngredienten, ingredient)) {
+      this.addSql(`
             INSERT INTO prijs SET bedrag=1, begindatum=NOW();
             INSERT INTO pizza_ingredient SET categorie_id = @ingredienten_categorie_id, prijs_id = LAST_INSERT_ID(), naam="${ingredient}";
         `);
-        insertedIngredienten.push(ingredient);
+      this.insertedIngredienten.push(ingredient);
     }
 
-    addSql(`INSERT INTO pizza_standaard_pizza_ingredient
+    this.addSql(`INSERT INTO pizza_standaard_pizza_ingredient
         SET pizza_standaard_id = (SELECT pizza_standaard_id FROM pizza_standaard WHERE naam="${naam}"),
         pizza_ingredient_id = (SELECT pizza_ingredient_id FROM pizza_ingredient WHERE naam="${ingredient}"),
         aantal=${aantalkeer_ingredient};`);
+  }
 }
-
-function addSql(_sql) {
-    sql += _sql + "\n";
-}
-
-fs.writeFileSync('./output.sql', sql, {encoding: 'utf8'})

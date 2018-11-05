@@ -7,20 +7,11 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch via NPM",
+            "name": "Inspect",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
-                "start"
-            ],
-            "port": 9229
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Inspect via NPM",
-            "runtimeExecutable": "npm",
-            "runtimeArgs": [
-                "inspect-bestellingen"
+                "run",
+                "inspect"
             ],
             "port": 9229
         },
