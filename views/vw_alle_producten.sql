@@ -1,5 +1,5 @@
 create or replace view vw_alle_producten
-as 
+as
 select distinct     c.naam                              as Categorie,
                     concat("Product - ", p.naam)        as Product,
                     pp.bedrag                           as Prijs
@@ -8,7 +8,7 @@ from                categorie c,
                     prijs pp
 where               p.categorie_id = c.categorie_id
 and                 p.prijs_id = pp.prijs_id
-union all
+union
 select              c.naam                              as Categorie,
                     concat("Ingredient - ", i.naam)     as Product,
                     pi.bedrag                           as Prijs
@@ -17,7 +17,7 @@ from                categorie c,
                     prijs pi
 where               i.categorie_id = c.categorie_id
 and                 i.prijs_id = pi.prijs_id
-union all
+union
 select distinct     ps.categorienaam                    as Categorie,
                     concat("Pizza - ", ps.pizzanaam)   as Product,
                     ps.pizzaprijs                       as Prijs
