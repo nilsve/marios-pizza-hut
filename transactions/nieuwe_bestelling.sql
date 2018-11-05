@@ -11,6 +11,9 @@ begin
 
     start transaction;
 
+        -- Read only data which is commited
+        set transaction isolation level read comitted;
+
         set @debug = 'start - ';
 
         -- Adres
