@@ -34,3 +34,8 @@ rem Views
 cd C:\Git\marios-pizza-hut\views
 
 for %%i in (*.sql) do %MYSQL% -u %USER% --password=%PASS% %DB% < %%i
+
+rem Indexes
+cd C:\Git\marios-pizza-hut\indexes
+
+for %%i in (*.sql) do %MYSQL% -u %USER% --password=%PASS% %DB% < %%i
