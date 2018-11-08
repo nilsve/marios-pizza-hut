@@ -17,12 +17,12 @@ select      concat(k.voornaam, " ", k.achternaam)   as klant,
             ps.naam                                 as pizzanaam,
             br.prijs_id,
             p.bedrag                                as product_pizza_prijs,
-            br.prijs_optie_id,
+            br.prijs_id                             as prijs_optie_id,
             po.bedrag                               as optieprijs
 from        bestelling b,
             klant k,
-            filiaal f, 
-            coupon c, 
+            filiaal f,
+            coupon c,
             bestelregel br,
             product pr,
             pizza_samenstelling ps,
@@ -35,5 +35,5 @@ and         b.bestelling_id   = br.bestelling_id
 and         br.product_id     = pr.product_id
 and         b.bestelling_id   = ps.bestelling_id
 and         br.prijs_id       = p.prijs_id
-and         br.prijs_optie_id = po.prijs_id
+and         br.prijs_id       = po.prijs_id
 order by    b.besteldatum desc;
